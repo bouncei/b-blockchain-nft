@@ -1,4 +1,6 @@
+import Image from "next/image";
 import React from "react";
+import profileIcon from '../assets/dk.png'
 
 const style = {
     wrapper: `relative`,
@@ -12,6 +14,7 @@ const style = {
     button: ` relative text-lg font-semibold px-12 py-4 bg-[#363840] rounded-lg mr-5 text-[#e4e8ea] hover:bg-[#4c505c] cursor-pointer`,
     cardContainer: `rounded-[3rem]`,
     infoContainer: `h-20 bg-[#313338] p-4 rounded-b-lg flex items-center text-white`,
+    profileimg: `h-[2.25rem] rounded-full`,
     author: `flex flex-col justify-center ml-4`,
     name: ``,
     infoIcon: `flex justify-end items-center flex-1 text-[#8a939b] text-3xl font-bold`,
@@ -41,8 +44,36 @@ const Hero = () => {
                         <img
                             className="rounded-t-lg"
                             src="https://bloks.io/cdn-cgi/image/width=500/https://ipfs.io/ipfs/QmX1i5kCtVauTWvRRhsmPhz2iUjtMec2ZZnosqMDqpHNsS"
-                            alt="image" 
+                            alt="image"
                         />
+
+                        <div className={style.infoContainer}>
+                            <img
+                                className={style.profileimg}
+                                src="https://lh3.googleusercontent.com/pqR3PEN7lUuAwTZpk_sjbKKGQVbj4jIj_OFGDmNW1wGKPgygR6tpM0sAcbuMjis84ddfeokjzWjAMNQYw0VpNyIkx6OwjQFifxLHlw=s80"
+                                alt="profile picture"
+
+                            />
+
+                            <div className={style.author}>
+                                <div className={style.name}>Future Proof Visions #108</div>
+
+                                <a
+                                    className="text-[#1868b7]" 
+                                    href="https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/85237985525734684917380424682378680952947795822601319472306616631339503321089"
+                                    name="Bouncey"
+                                >
+                                    Bouncey
+                                </a>
+                             
+                            </div>
+
+                            
+                            
+
+                            
+
+                        </div>
 
                     </div>
                 </div>
