@@ -1,5 +1,9 @@
+import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
+import { useWeb3 } from "@3rdweb/hooks";
+import { userInfo } from "os";
 
 
 const style = {
@@ -27,12 +31,69 @@ const style = {
 
 const Collection = () => {
     const router = useRouter()
-    console.log(router.query) // I dont know why this is not returning the collection address fthat i retrieved from thirdweb
+    const { provider } = useWeb3()
+    const { collectionId } = router.query
+    const [collection, setCollection] = useState({})
+    const [nfts, setNfts] = useState([])
+    const [listings, setListings] = useState([])
 
+    // https://eth-rinkeby.alchemyapi.io/v2/LoiamEkayuo8Pg9v4eJtJVP-SsgjfpLc
+
+
+    const nftModule = useMemo(() => {
+        if (!provider) return
+
+        const sdk = new ThirdwebSDK(
+            provider.getSigner(),
+            'https://eth-rinkeby.alchemyapi.io/v2/LoiamEkayuo8Pg9v4eJtJVP-SsgjfpLc'
+        )
+
+        return sdk.getNFTModule(collectionId)
+
+    }, [provider])
+
+    // gets all NFTS in th collection
+    useEffect(() => {
+        if(!nftModule) return 
+        ;(async () => {
+            const nfts = await nftModule.getAll()
+
+            setNfts(nfts)
+        } )
+    }, [nftModule])
+
+
+    // Getting Markeplace module
+    const marketPlaceModule = useMemo(() => {
+        if (!provider) return 
+        
+        const sdk = new ThirdwebSDK(
+            provider.getSigner(),
+            'https://eth-rinkeby.alchemyapi.io/v2/LoiamEkayuo8Pg9v4eJtJVP-SsgjfpLc'
+        )
+
+        return sdk.getMarketplaceModule(
+            '0x08c1FfA0Ff5076E749B9F73187CD5a10c8272b9f'
+        )
+    }, [provider])
+
+    // Gets all the listing in the collection
+    useEffect(() => {
+        if (!marketPlaceModule) return
+        ;(async () => {
+            setListings(await marketPlaceModule.getMarketplaceModule())
+        })()
+    }, [marketPlaceModule])
     
-    return <div></div>
+    return(
+
+        <Link href="/">
+            <h2>{router.query.collectionId}</h2>
+        </Link>
+
+    )
+    
+
 }
-
-
 
 export default Collection

@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
 import { client } from '../lib/sanityClient';
-import toast, { Toaster } from 'react-hot-toast';  // Receiving toast
+import toast, { Toaster } from "react-hot-toast";// Receiving toast
 
 const style = {
   wrapper: ``,
@@ -16,9 +16,9 @@ const style = {
 export default function Home() {
   const {address, connectWallet} = useWeb3()
 
-  const welcomeUser = (userName, toastHandler = toast) => {    //toast function for welcome user
+  const welcomeUser = (name, toastHandler = toast) => {    //toast function for welcome user
     toastHandler.success(
-      `Welcome back${userName !== 'Unnamed' ? ` ${userName}` : ''}!`,
+      `Welcome back${name !== 'Unnamed' ? ` ${name}` : ''}!`,
       {
         style: {
           background: '#04111d',
@@ -47,7 +47,7 @@ export default function Home() {
 
   return (
     <div className={style.wrapper}>
-      <Toaster position="bottom0left" reverseOrder={false} ></>
+      <Toaster position="top-right" reverseOrder={false} />
       {address ?(   //Conditional Rendering
 
         <>
