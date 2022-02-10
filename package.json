@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "@3rdweb/hooks": "^1.9.2",
+    "@3rdweb/sdk": "^1.39.4",
     "@sanity/client": "^3.0.3",
     "next": "latest",
     "react": "^17.0.2",
