@@ -90,7 +90,7 @@ const Collection = () => {
 
   // Fetching Our Collection Data from sanity.io
   const fetchCollectionData = async (sanityClient = client) => {
-    const query = `*[_type == "marketItems" && contractAddress == "${collectionId}" ] {
+    const query = `*[_type == "marketItems" && contractAddress == "mutant-ape-yacht-club" ] {
           "imageUrl": profileImage.asset->url,
           "bannerImageUrl": bannerImage.asset->url,
           volumeTraded,

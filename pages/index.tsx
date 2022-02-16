@@ -13,6 +13,28 @@ const style = {
   details: `text-lg text-center text=[#282b2f] font-semibold mt-4`,
 }
 
+
+
+// export const getServerSideProps = async (sanityClient = client) => {
+//   const query = `*[_type == "marketItems"]`
+
+//   const marketItems = await sanityClient.fetch(query)
+  
+//   if (!marketItems.length) {
+//     return {
+//       props: {
+//         marketItems : []
+//       },
+//     }
+//   }else {
+//     return {
+//       props: {
+//         marketItems
+//       }
+//     }
+//   }
+// }
+
 export default function Home() {
   const {address, connectWallet} = useWeb3()
 

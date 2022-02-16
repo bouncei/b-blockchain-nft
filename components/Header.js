@@ -45,13 +45,13 @@ const Header = () => {
             />
 
         </div>
-
         <div className={style.headerItems}>
-            <Link href="/collections/0x913ebF098ca511b04d1fD21e4155245FaC6FDAA0"> 
+        {/* /collections/0x913ebF098ca511b04d1fD21e4155245FaC6FDAA0 */}
+            <Link href=""> 
                 <div className={style.headerItem}> Collections </div>
             </Link>
 
-            <Link href="">
+            <Link href="/contract/mutant-ape-yacht-club">
                 <div className={style.headerItem}> Stats </div>
 
             </Link>
