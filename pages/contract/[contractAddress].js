@@ -5,7 +5,8 @@ import { sanityClient } from "../../sanity";
 import { CgWebsite } from 'react-icons/cg'
 import { AiOutlineInstagram, AiOutlineTwitter } from 'react-icons/ai'
 import { HiDotsVertical } from "react-icons/hi"
-import NewImage from "../../components/NewImage";
+import NewImage from "../../components/NftCard";
+import NftCard from "../../components/NftCard";
 
 
 
@@ -172,10 +173,15 @@ const Item = ({
 
 
             <div className='flex flex-wrap'>
-                {images.map(({_key, asset}, image) => (
-                    <NewImage
+                {images.map(({_key, asset, caption, price}, image) => (
+                    <NftCard
                         key={_key}
                         image={asset}
+                        title={title}
+                        sub={caption}
+                        itemPrice={price ? price : 0.1}
+                        // listings="true"
+                        
                     />
                 ))}
             </div>

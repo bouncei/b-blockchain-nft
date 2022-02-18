@@ -11,6 +11,11 @@ export default {
                 isHightLight: true
             }
         },
+        {
+            name: 'price',
+            title: 'Price',
+            type: 'float',
+        },
     ],
     options: {
         hotspot: true,
