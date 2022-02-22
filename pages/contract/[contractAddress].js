@@ -173,15 +173,21 @@ const Item = ({
 
 
             <div className='flex flex-wrap'>
-                {images.map(({_key, asset, caption, price}, image) => (
+                {/* {images.map(({_key, asset, caption, price}, image) => (
                     <NftCard
                         key={_key}
                         image={asset}
                         title={title}
                         sub={caption}
-                        itemPrice={price ? price : 0.1}
+                        itemPrice={parseFloat(price) ? parseFloat(price) : 0.1}
                         // listings="true"
                         
+                    />
+                ))} */}
+                {images.map(({_key,}) => (
+                    <NftCard
+                        key={__key}
+                        nftImage={nftImage} 
                     />
                 ))}
             </div>

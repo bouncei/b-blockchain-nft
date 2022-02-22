@@ -14,7 +14,7 @@ export default {
         {
             name: 'price',
             title: 'Price',
-            type: 'float',
+            type: 'string',
         },
     ],
     options: {

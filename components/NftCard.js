@@ -21,20 +21,20 @@ const style = {
   likeIcon: `text-xl mr-2`,
 }
 
-const NftCard = ({image, title, nftItem, sub, itemPrice, likes}) => {
+const NftCard = ({image, title, sub, itemPrice, likes, nftItem}) => {
     const [isListed, setIsListed] = useState(true)
     const [price, setPrice] = useState(0)
 
     // useEffect(() => {
 
     // }, )
-    
+    console.log(nftItem)
     return (
         <div
             className={style.wrapper}
             onClick={() => {
                 Router.push({
-                    pathname: `/assets/${nftItem.id}`,
+                    pathname: `/nfts/${nftItem.id}`,
                     query: {isListed: isListed},
                 })
             }}
