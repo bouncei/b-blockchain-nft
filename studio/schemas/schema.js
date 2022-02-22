@@ -4,6 +4,8 @@ import createSchema from 'part:@sanity/base/schema-creator'
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 import itemImage from './itemImage'
+import testImage from './testImage'
+
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -106,10 +108,18 @@ export default createSchema({
             title: 'NFT Image',
             type: 'array',
             of : [{type: 'itemImage'}],
-          }
+          },
+          {
+            name: 'images',
+            title: "Images",
+            type: "array",
+            of: [{ type: 'reference', to: [{ type: 'testImage' }] }],
+          },          
         ],
       },
       itemImage,
+      testImage,
+      
     ]
     /* Your types here! */
   ),

@@ -2,7 +2,7 @@
 import { urlFor } from '../sanity'
 import { useEffect, useState } from "react";
 import { BiHeart } from "react-icons/bi";
-import { Router } from 'next/router';
+import Router from 'next/router';
 
 const style = {
   wrapper: `bg-[#303339] flex-auto w-[14rem] h-[22rem] my-10 mx-5 rounded-2xl overflow-hidden cursor-pointer`,
@@ -21,26 +21,38 @@ const style = {
   likeIcon: `text-xl mr-2`,
 }
 
-const NftCard = ({image, title, sub, itemPrice, likes, nftItem}) => {
-    const [isListed, setIsListed] = useState(true)
+const NftCard = ({title, likes, nftItem, listing}) => {
+    const [isListed, setIsListed] = useState(false)
     const [price, setPrice] = useState(0)
 
-    // useEffect(() => {
-
-    // }, )
     console.log(nftItem)
+    // console.log(nftItem.imageTest.asset)
+
+    const id = Object.values(nftItem)[1]
+    
+    // console.log(id[1])
+
+    useEffect(() => {
+        if (Boolean(listing)){
+            setIsListed(true)
+            setPrice(nftItem.price)
+        }
+
+    }, [listing, nftItem])
+
+
     return (
         <div
             className={style.wrapper}
             onClick={() => {
                 Router.push({
-                    pathname: `/nfts/${nftItem.id}`,
+                    pathname: `/nfts/${id}`,
                     query: {isListed: isListed},
                 })
             }}
         >
             <div className={style.imgContainer}>
-                <img src={urlFor(image).auto("format")} alt={sub} height="266.83" width="266.83"/>
+                <img src={urlFor(nftItem.imageTest.asset).auto("format")} alt={nftItem.caption} />
                 <h1></h1>
             </div>
 
@@ -48,7 +60,7 @@ const NftCard = ({image, title, sub, itemPrice, likes, nftItem}) => {
                 <div className={style.info}>
                     <div className={style.infoLeft}>
                         <div className={style.collectionName}>{title}</div>
-                        <div className={style.assetName}>#{sub}</div>
+                        <div className={style.assetName}>#{nftItem.caption}</div>
                     </div>
                     {isListed && (
                         <div className={style.infoRight}>
@@ -59,7 +71,11 @@ const NftCard = ({image, title, sub, itemPrice, likes, nftItem}) => {
                                     src="https://storage.opensea.io/files/6f8e2979d428180222796ff4a33ab929.svg"
                                     alt='eth'
                                 />
-                                {itemPrice}
+                                {
+                                    price
+                                    ? price
+                                    : 0.1
+                                }
                             </div>
                         </div>
                     )}

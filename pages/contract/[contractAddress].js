@@ -38,6 +38,7 @@ const Item = ({
     volumeTraded,
     createdBy,
     images,
+    nftItems,
     contractAddress,
     creator,
     title,
@@ -49,6 +50,9 @@ const Item = ({
     // const { address } = router.query
 
     console.log(creator)
+
+    // console.log(nftItems.id)
+    // console.log(nftItems.imageTest)
     return (
         <div className='overflow-hidden'>
             <Header />
@@ -173,23 +177,25 @@ const Item = ({
 
 
             <div className='flex flex-wrap'>
-                {/* {images.map(({_key, asset, caption, price}, image) => (
+                {nftItems.map((nftItem, id) => (
                     <NftCard
-                        key={_key}
-                        image={asset}
+                        key={id}
+                        nftItem={nftItem}
                         title={title}
-                        sub={caption}
-                        itemPrice={parseFloat(price) ? parseFloat(price) : 0.1}
-                        // listings="true"
+                        listing="true"
+                        // sub={caption}
+                        // itemPrice={parseFloat(price) ? parseFloat(price) : 0.1}
                         
                     />
-                ))} */}
-                {images.map(({_key,}) => (
-                    <NftCard
-                        key={__key}
-                        nftImage={nftImage} 
-                    />
                 ))}
+                {/* {nftItems.map((nftItem, id) => {
+                    <NftCard 
+                        key={id}
+                        nftItem={nftItem}
+                        title={title}
+
+                    />
+                })} */}
             </div>
 
 
@@ -211,7 +217,8 @@ export const getServerSideProps = async() => {
         "creator": createdBy->userName,
         title, floorPrice,
         "allOwners": owners[]->,
-        description
+        "nftItems": images[]->,
+        description,
     }`
     const items = await sanityClient.fetch(query)
 
@@ -229,6 +236,7 @@ export const getServerSideProps = async() => {
                 volumeTraded: items.volumeTraded,
                 createdBy: items.createdBy,
                 images: items.nftImage,
+                nftItems: items.nftItems,
                 contractAddress: items.contractAddress,
                 creator: items.creator,
                 title: items.title,
