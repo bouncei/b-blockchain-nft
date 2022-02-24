@@ -25,7 +25,7 @@ const NftCard = ({title, likes, nftItem, listing}) => {
     const [isListed, setIsListed] = useState(false)
     const [price, setPrice] = useState(0)
 
-    console.log(nftItem)
+    // console.log(nftItem)
     // console.log(nftItem.imageTest.asset)
 
     const id = Object.values(nftItem)[1]
@@ -52,7 +52,7 @@ const NftCard = ({title, likes, nftItem, listing}) => {
             }}
         >
             <div className={style.imgContainer}>
-                <img src={urlFor(nftItem.imageTest.asset).auto("format")} alt={nftItem.caption} />
+                <img src={urlFor(nftItem.imageTest.asset).auto("format")} alt={nftItem.caption} height="266.83" width="266.83" />
                 <h1></h1>
             </div>
 

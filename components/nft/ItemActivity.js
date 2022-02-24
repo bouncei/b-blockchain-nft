@@ -24,7 +24,7 @@ const style = {
 const ItemActivity = (() => {
     return (
         <div>
-            Yesssss, Baby!
+            
         </div>
 
     )
