@@ -8,7 +8,7 @@ const style = {
   likesCounter: `flex-1 flex items-center justify-end`,
 }
 
-const NFTImage = ({ selectedNft }) => {
+const NFTImage = ({ selectedNft, alt }) => {
   return (
     <div>
       <div className={style.topBar}>
@@ -23,7 +23,7 @@ const NFTImage = ({ selectedNft }) => {
       <div>
         {console.log(selectedNft, '🎆')}
         {/* <img src={urselectedNft?.image} /> */}
-        {/* <img src={urlFor(selectedNft.imageTest.asset).auto("format")}/> */}
+        <img src={urlFor(selectedNft)} alt={alt}/>
       </div>
     </div>
   )

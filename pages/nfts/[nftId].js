@@ -24,13 +24,14 @@ const style = {
   likesCounter: `flex-1 flex items-center justify-end`,
 }
 
-const Nft = () => {
+const Nft = ({nice}) => {
 
   const [ selectedNft, setSelectedNft ] = useState({})
   const [ listings, setlistings ] = useState([])
   const router = useRouter()
   const { check } = router.query
 
+  console.log("nice", nice)
 
 
   const fetchImageData = async (sanityClient = client) => {
@@ -49,7 +50,7 @@ const Nft = () => {
       
     await setSelectedNft(nftItem[0])
     
-    if (nftItem == {}){
+    if (nftItem === []){
       console.log("nothing here")
     }else {
       console.log("yessss")
@@ -63,55 +64,48 @@ const Nft = () => {
   }, [check])
 
 
+  console.log(selectedNft)
+
   return(
     <div>
-      yesss {selectedNft?.caption}
-      {/* <NFTImage selectedNft={group}/> */}
+        <Header />
+      <div className={style.wrapper}>
+        <div className={style.container}>
+          <div className={style.topContent}>
+            <div className={style.nftImgContainer}>
+              <NFTImage
+                selectedNft={selectedNft.imageTest?.asset}
+                alt={selectedNft?.caption}
+              />
+            </div>
+            <div className={style.detailsContainer}>
+              {/* <GeneralDetails selectedNft={group} /> */}
+              {/* <Purchase
+                isListed={router.query.isListed}
+                selectedNft={group}
+                // listings={listings}
+                // marketPlaceModule={marketPlaceModule}
+              /> */}
+            </div>
+          </div>
+          {/* <ItemActivity /> */}
+        </div>
+      </div>
+      yesss {selectedNft.caption} {nice}
+      {/* <img src={urlFor(selectedNft.imageTest?.asset)}/> */}
     </div>
   )
 
-  // return(
-  //   <div>
-  //     <img src={urlFor(group.imageTest.asset)}/>
-  //     <Header />
-  //     <div className={style.wrapper}>
-  //       <div className={style.container}>
-  //         <div className={style.topContent}>
-  //           <div className={style.nftImgContainer}>
-  //             {/* <NFTImage /> */}
-    
-  //           </div>
-  //         </div>
-  //       </div>
+}
 
-  //     </div>
-  //   </div>
-  // )
+export async function getServerSideProps(context) {
+  const id = context.params
 
-  // return (
-  //   <div>
-  //     <Header />
-  //     <div className={style.wrapper}>
-  //       <div className={style.container}>
-  //         <div className={style.topContent}>
-  //           <div className={style.nftImgContainer}>
-  //             <NFTImage selectedNft={group} />
-  //           </div>
-  //           <div className={style.detailsContainer}>
-  //             {/* <GeneralDetails selectedNft={group} /> */}
-  //             {/* <Purchase
-  //               isListed={router.query.isListed}
-  //               selectedNft={group}
-  //               // listings={listings}
-  //               // marketPlaceModule={marketPlaceModule}
-  //             /> */}
-  //           </div>
-  //         </div>
-  //         <ItemActivity />
-  //       </div>
-  //     </div>
-  //   </div>
-  // )
+  return {
+    props: {
+      nice: id.nftId,
+    }
+  }
 }
 
 export default Nft
