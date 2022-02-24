@@ -79,16 +79,16 @@ const Nft = ({nice}) => {
               />
             </div>
             <div className={style.detailsContainer}>
-              {/* <GeneralDetails selectedNft={group} /> */}
-              {/* <Purchase
+              <GeneralDetails selectedNft={selectedNft} />
+              <Purchase
                 isListed={router.query.isListed}
-                selectedNft={group}
-                // listings={listings}
+                selectedNft={selectedNft}
+                listings={listings}
                 // marketPlaceModule={marketPlaceModule}
-              /> */}
+              />
             </div>
           </div>
-          {/* <ItemActivity /> */}
+          <ItemActivity />
         </div>
       </div>
       yesss {selectedNft.caption} {nice}

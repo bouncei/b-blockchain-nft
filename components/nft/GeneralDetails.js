@@ -21,7 +21,7 @@ const style = {
 }
 
 
-const GeneralDetails = (() => {
+const GeneralDetails = (({selectedNft}) => {
     return (
         <div className={style.wrapper}>
         <div className={style.infoContainer}>
