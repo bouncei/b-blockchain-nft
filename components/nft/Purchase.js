@@ -15,20 +15,20 @@ const MakeOffer = ({ isListed, selectedNft, listings, marketPlaceModule }) => {
   const [selectedMarketNft, setSelectedMarketNft] = useState()
   const [enableButton, setEnableButton] = useState(false)
 
-  useEffect(() => {
-    if (!listings || isListed === 'false') return
-    ;(async () => {
-      setSelectedMarketNft(
-        listings.find((marketNft) => marketNft.asset?.id === selectedNft.id)
-      )
-    })()
-  }, [selectedNft, listings, isListed])
+  // useEffect(() => {
+  //   if (!listings || isListed === 'false') return
+  //   ;(async () => {
+  //     setSelectedMarketNft(
+  //       listings.find((marketNft) => marketNft.asset?.id === selectedNft.id)
+  //     )
+  //   })()
+  // }, [selectedNft, listings, isListed])
 
   useEffect(() => {
-    if (!selectedMarketNft || !selectedNft) return
+    if (!selectedNft) return
 
     setEnableButton(true)
-  }, [selectedMarketNft, selectedNft])
+  }, [selectedNft])
 
   const confirmPurchase = (toastHandler = toast) =>
     toastHandler.success(`Purchase successful!`, {

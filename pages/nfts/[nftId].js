@@ -27,7 +27,7 @@ const style = {
 const Nft = ({nice}) => {
 
   const [ selectedNft, setSelectedNft ] = useState({})
-  const [ listings, setlistings ] = useState([])
+  // const [ listings, setlistings ] = useState([])
   const router = useRouter()
   const { check } = router.query
 
@@ -83,7 +83,10 @@ const Nft = ({nice}) => {
               <Purchase
                 isListed={router.query.isListed}
                 selectedNft={selectedNft}
-                listings={listings}
+                listings="true"
+                // Get the id from the route.query
+
+
                 // marketPlaceModule={marketPlaceModule}
               />
             </div>

@@ -19,7 +19,7 @@ const style = {
 //   const query = `*[_type == "marketItems"]`
 
 //   const marketItems = await sanityClient.fetch(query)
-  
+
 //   if (!marketItems.length) {
 //     return {
 //       props: {
@@ -36,7 +36,7 @@ const style = {
 // }
 
 export default function Home() {
-  const {address, connectWallet} = useWeb3()
+  const { address, connectWallet } = useWeb3()
 
   const welcomeUser = (name, toastHandler = toast) => {    //toast function for welcome user
     toastHandler.success(
@@ -52,53 +52,64 @@ export default function Home() {
 
   useEffect(() => {
     if (!address) return
-    ;(async () => {           //IIFE(Immediately Invoked Function Expression)
-      const userDoc = {
-        _type: 'users',       
-        _id: address,
-        userName: 'Unnamed',
-        walletAddress: address,
-        
-      }
+      ; (async () => {           //IIFE(Immediately Invoked Function Expression)
+        const userDoc = {
+          _type: 'users',
+          _id: address,
+          userName: 'Unnamed',
+          walletAddress: address,
 
-      const result = await client.createIfNotExists(userDoc)     //Creates a new user in the database
-      welcomeUser(result.userName)
-    })()
+        }
+
+        const result = await client.createIfNotExists(userDoc)     //Creates a new user in the database
+        welcomeUser(result.userName)
+      })()
 
   }, [address])
 
   return (
     <div className={style.wrapper}>
       <Toaster position="top-right" reverseOrder={false} />
-      {address ?(   //Conditional Rendering
+      {address ? (   //Conditional Rendering
 
         <>
-          <Header/>
-          <Hero/>
+          <div className='section1'>
+
+            <Header />
+
+            <Hero />
+          </div>
+
+          <main className='max-w-7xl mx-auto px-8 sm:px-16'> 
+            <section className='section2'>
+              <h2 className='text-4xl text-white font-semibold pb-5'>Featured Collections</h2>
+            </section>
+
+          </main>
 
         </>
 
       ) : (
 
         <div className={style.walletConnectWrapper}>
-        <button
-         className={style.button}
-         onClick={() => connectWallet("injected")}  //Prompts User to connect their metamask wallet
-         
-        >
-          Connect Wallet
+          <button
+            className={style.button}
+            onClick={() => connectWallet("injected")}  //Prompts User to connect their metamask wallet
 
-        </button>
+          >
+            Connect Wallet
 
-        <div className={style.details}>
-          Please connect your metamask wallet
+          </button>
+
+          <div className={style.details}>
+            Please connect your metamask wallet
+
+          </div>
 
         </div>
 
-        </div>
-        
-      )}  
+      )}
     </div>
-    
+
   )
 }

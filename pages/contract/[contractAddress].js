@@ -134,7 +134,7 @@ const Item = ({
                 <div className={style.midRow}>
                     <div className={style.statsContainer}>
                         <div className={style.collectionStat}>
-                            <div className={style.statValue}>{images.length}</div>
+                            <div className={style.statValue}>{nftItems.length}</div>
                             <div className={style.statName}>items</div>
                         </div>
                         <div className={style.collectionStat}>
@@ -212,7 +212,6 @@ export const getServerSideProps = async() => {
         "bannerImageUrl": bannerImage.asset->url,
         volumeTraded,
         createdBy,
-        nftImage,
         contractAddress,
         "creator": createdBy->userName,
         title, floorPrice,
@@ -235,7 +234,7 @@ export const getServerSideProps = async() => {
                 bannerImageUrl: items.bannerImageUrl,
                 volumeTraded: items.volumeTraded,
                 createdBy: items.createdBy,
-                images: items.nftImage,
+                // images: items.nftImage,
                 nftItems: items.nftItems,
                 contractAddress: items.contractAddress,
                 creator: items.creator,

@@ -2,10 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --main: #04111d;
+    --shade_main: #0b2136;
+}
 
-
-html, body {
-    background-color: #202225;
+html,
+body {
+    background-color: var(--main);
     margin: 0;
     padding: 0;
 
@@ -21,6 +25,19 @@ a {
 * {
     box-sizing: border-box;
 }
+
+.section1 {
+    clip-path: polygon(0 0, 100% 0, 100% 94%, 0 98%);
+}
+
+.section2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
+}
+
 
 
 /* #checkkk {
