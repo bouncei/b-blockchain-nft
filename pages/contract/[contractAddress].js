@@ -50,6 +50,7 @@ const Item = ({
     // const { address } = router.query
 
     console.log(creator)
+    // console.log("nice", imageUrl)
 
     // console.log(nftItems.id)
     // console.log(nftItems.imageTest)
