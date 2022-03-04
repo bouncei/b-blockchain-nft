@@ -9,6 +9,7 @@ import toast, { Toaster } from "react-hot-toast";// Receiving toast
 import { title } from 'process';
 import HomeCard from '../components/HomeCard'
 import { urlFor } from '../sanity';
+import Link from 'next/link';
 
 const style = {
   wrapper: `overflow-hidden`,
@@ -44,7 +45,9 @@ export default function Home({
   imageUrl,
   title,
   description,
-  banners
+  banners,
+  contractAddress,
+
 }) {
   const { address, connectWallet } = useWeb3()
 
@@ -60,7 +63,11 @@ export default function Home({
     )
   }
 
-  console.log("yes", banners)
+  // const refer0 = `contract/${contractAddress[0]}`
+  const refer1 = `contract/${contractAddress[1]}`
+  // const refer0 = `contract/${contractAddress[o]}`
+
+  console.log("yes", contractAddress[1])
 
   useEffect(() => {
     if (!address) return
@@ -100,70 +107,31 @@ export default function Home({
                 <h1 className='text-white'>{t}</h1>
               ))}
 
-              {/* <div className="px-2">
-                <div className="flex -mx-2">
-                  <div className="w-1/3 px-2">
-                    <div className="bg-gray-400 h-12"></div>
-                  </div>
-                  <div className="w-1/3 px-2">
-                    <div className="bg-gray-500 h-12"></div>
-                  </div>
-                  <div className="w-1/3  px-2">
-                    <div className="bg-gray-400 h-12"></div>
-                  </div>
-                  <div className="w-1/3 px-2">
-                    <div className="bg-gray-400 h-12"></div>
-                  </div>
-                </div>
-              </div> */}
+  
 
               <div className='flex flex-wrap'>
-                <div className='bg-[#303339] max-w-sm flex-auto w-[14rem] h-[30rem] my-10 mx-5 overflow-hidden cursor-pointer'>
-                  <div className='h-2/3 w-full overflow-hidden'>
-                    <img src={urlFor(imageUrl[0]).auto("format")} className="h-full w-full"/>
 
 
-                  </div>
+                <HomeCard
+                  bannerImage={banners[0]}
+                  collectionItem={refer1}
+                  title={title[0]}
+                  description={description[0]}
 
-                
-                </div>
+                  profileImage={imageUrl[0]}
+                />
 
-                <div className='bg-[#303339] max-w-sm flex-auto w-[14rem] h-[30rem] my-10 mx-5 overflow-hidden cursor-pointer'>
-                  <div className='h-2/3 w-full overflow-hidden'>
-                    <img src={urlFor(imageUrl[1]).auto("format")} alt="yes" className="h-full w-full"/>
+                <HomeCard
+                  bannerImage={banners[1]}
+                  collectionItem={refer1}
+                  title={title[1]}
+                  description={description[1]}
 
-
-                  </div>
-
-                
-                </div>
-
-                <div className='bg-[#303339] flex-auto w-[14rem] h-[22rem] my-10 mx-5 rounded-2xl overflow-hidden cursor-pointer'>
-                  <div className='h-2/3 w-full overflow-hidden flex justify-center items-center'>
-                  <div className="bg-gray-500 h-12"></div>
-
-                  </div>
-
-                
-                </div>
+                  profileImage={imageUrl[1]}
+                />
 
 
               </div>
-
-              <HomeCard
-                key={title}
-                profileImage={imageUrl[0]}
-                title={title[0]}
-                collectionItem="mutant-ape-yacht-club"
-              />
-
-              <HomeCard
-                key={title[1]}
-                profileImage={imageUrl[1]}
-                title={title[1]}
-              />
-
-
             </section>
 
           </main>
@@ -202,6 +170,7 @@ export async function getStaticProps() {
   const descriptions = []
   const images = []
   const banners = []
+  const contractAddress = []
 
 
   const query = `*[ _type == "marketItems" ]{
@@ -209,6 +178,7 @@ export async function getStaticProps() {
     "bannerUrl" : bannerImage.asset,
     title,
     description,
+    contractAddress,
   }`
 
   const items = await sanityClient.fetch(query)
@@ -221,6 +191,7 @@ export async function getStaticProps() {
     images.push(items[i].imageUrl)
     descriptions.push(items[i].description)
     banners.push(items[i].bannerUrl)
+    contractAddress.push(items[i].contractAddress)
   }
 
 
@@ -240,7 +211,8 @@ export async function getStaticProps() {
         imageUrl: images,
         title: titles,
         description: descriptions,
-        banners: banners
+        banners: banners,
+        contractAddress: contractAddress,
       },
     }
   }
