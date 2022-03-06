@@ -25,11 +25,7 @@ const style = {
 
 
 export default function Home({
-  imageUrl,
-  title,
-  description,
-  banners,
-  contractAddress,
+  items,
 
 }) {
   const { address, connectWallet } = useWeb3()
@@ -46,11 +42,9 @@ export default function Home({
     )
   }
 
-  // const refer0 = `contract/${contractAddress[0]}`
-  const refer1 = `contract/${contractAddress[1]}`
-  // const refer0 = `contract/${contractAddress[o]}`
+  console.log(items.contactAddress)
 
-  console.log("yes", contractAddress[1])
+
 
   useEffect(() => {
     if (!address) return
@@ -84,39 +78,26 @@ export default function Home({
 
             <br />
 
-           
+
           </div>
 
-          <main className='max-w-7xl mx-auto px-8 sm:px-16 mainPageS'>
+          <main className='max-w-7xl mx-auto px-8 sm:px-16'>
             <section className='section2 pt-6'>
               <h2 className='text-4xl text-white font-semibold pb-5'>Featured Collections</h2>
 
-              {title.map((t) => (
-                <h1 className='text-white'>{t}</h1>
-              ))}
 
-  
 
               <div className='flex flex-wrap'>
 
-
-                <HomeCard
-                  bannerImage={banners[0]}
-                  collectionItem={refer1}
-                  title={title[0]}
-                  description={description[0]}
-
-                  profileImage={imageUrl[0]}
-                />
-
-                <HomeCard
-                  bannerImage={banners[1]}
-                  collectionItem={refer1}
-                  title={title[1]}
-                  description={description[1]}
-
-                  profileImage={imageUrl[1]}
-                />
+                {items.map((item, id) => (
+                  <HomeCard
+                    bannerImage={item.bannerUrl}
+                    collectionItem={item.contractAddress} 
+                    title={item.title}
+                    description={item.description}
+                    profileImage = {item.imageUrl}
+                  />
+                ))}
 
                 <br />
                 <br />
@@ -139,10 +120,10 @@ export default function Home({
             <br />
 
           </div>
-           
 
-        
-          
+
+
+
 
         </>
 
@@ -173,13 +154,7 @@ export default function Home({
 
 
 
-export async function getStaticProps() {
-  const titles = []
-  const descriptions = []
-  const images = []
-  const banners = []
-  const contractAddress = []
-
+export async function getServerSideProps() {
 
   const query = `*[ _type == "marketItems" ]{
     "imageUrl" : profileImage.asset,
@@ -192,18 +167,6 @@ export async function getStaticProps() {
   const items = await sanityClient.fetch(query)
 
 
-
-  for (var i = 0; i < items.length; i++) {
-
-    titles.push(items[i].title)
-    images.push(items[i].imageUrl)
-    descriptions.push(items[i].description)
-    banners.push(items[i].bannerUrl)
-    contractAddress.push(items[i].contractAddress)
-  }
-
-
-
   if (!items) {
     return {
       props: null,
@@ -212,15 +175,7 @@ export async function getStaticProps() {
   } else {
     return {
       props: {
-        // imageUrl: [items[0].imageUrl, items[1].imageUrl],
-        // title: [items[0].title, items[1].title],
-        // description: items.description,
-
-        imageUrl: images,
-        title: titles,
-        description: descriptions,
-        banners: banners,
-        contractAddress: contractAddress,
+        items: items,
       },
     }
   }
