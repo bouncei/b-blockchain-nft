@@ -4,7 +4,7 @@
 
 :root {
     --main: #04111d;
-    --shade_main: #0b2136;
+    --shade_main: #0a1d2e;
 }
 
 html,
@@ -26,16 +26,24 @@ a {
     box-sizing: border-box;
 }
 
-.section1, .mainPage{
+.section1{
     clip-path: polygon(0 0, 100% 0, 100% 94%, 0 98%);
 }
 
-.section2 h2 {
+.section3 {
+    clip-path: polygon(0 30%, 100% 5%, 100% 100%, 0 100%);
+
+
+}
+
+.section2 h2, .section3 h2 {
     display: flex;
     justify-content: center;
     color: #ffff
 
 }
+
+
 
 
 

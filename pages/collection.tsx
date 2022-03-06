@@ -34,6 +34,8 @@ export default function Collection({
 
                         ))}
 
+                        
+
                     </div>
 
                 </div>

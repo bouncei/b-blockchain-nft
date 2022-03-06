@@ -18,6 +18,7 @@ const style = {
   button: `border border-[#282b2f] bg-[#2081e2] p-[0.8rem] text-xl font-semibold rounded-lg cursor-pointer text-black`,
   details: `text-lg text-center text=[#282b2f] font-semibold mt-4`,
   cardgrid: `w-1/3 px-2`,
+  sectionContainer: `max-w-7xl mx-auto px-8 sm:px-16`,
 }
 
 
@@ -69,9 +70,9 @@ export default function Home({
       {address ? (   //Conditional Rendering
 
         <>
+          <Header />
           <div className='section1'>
 
-            <Header />
 
 
             <Hero />
@@ -81,8 +82,8 @@ export default function Home({
 
           </div>
 
-          <main className='max-w-7xl mx-auto px-8 sm:px-16'>
-            <section className='section2 pt-6'>
+          <div className="max-w-7xl mx-auto px-8 sm:px-16 section2" >
+            <section className='pt-6'>
               <h2 className='text-4xl text-white font-semibold pb-5'>Featured Collections</h2>
 
 
@@ -92,10 +93,10 @@ export default function Home({
                 {items.map((item, id) => (
                   <HomeCard
                     bannerImage={item.bannerUrl}
-                    collectionItem={item.contractAddress} 
+                    collectionItem={item.contractAddress}
                     title={item.title}
                     description={item.description}
-                    profileImage = {item.imageUrl}
+                    profileImage={item.imageUrl}
                   />
                 ))}
 
@@ -107,7 +108,36 @@ export default function Home({
 
               </div>
             </section>
-          </main>
+
+          </div>
+
+          {/* <div className="bg-[#0a1d2e] section3">
+
+            <div className={style.sectionContainer}>
+              <h2 className='text-4xl text-white font-semibold pb-5'>Featured Collections</h2>
+
+            </div>
+          </div> */}
+
+          <div className="mx-auto px-8 sm:px-16 section3 bg-[#0a1d2e]" >
+            <section className='pt-6'>
+              <h2 className='text-4xl text-white font-semibold p-5 pt-20'>Top Collections</h2>
+
+
+
+              <div className='flex flex-wrap'>
+
+
+                <br />
+                <br />
+                <br />
+
+
+
+              </div>
+            </section>
+
+          </div>
 
           <div className='bg-black'>
             <Footer />
