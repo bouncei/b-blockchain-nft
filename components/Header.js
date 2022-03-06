@@ -47,7 +47,7 @@ const Header = () => {
         </div>
         <div className={style.headerItems}>
         {/* /collections/0x913ebF098ca511b04d1fD21e4155245FaC6FDAA0 */}
-            <Link href=""> 
+            <Link href="/collection"> 
                 <div className={style.headerItem}> Collections </div>
             </Link>
 
@@ -60,15 +60,13 @@ const Header = () => {
                 <div className={style.headerItem}> Resources </div>
 
             </Link>
-
-            {/* <Link href="">
-                <div className={style.headerItem}> Create </div>
-
-            </Link> */}
             
 
             <div className={style.headerIcon}>
-                <CgProfile/>
+                <Link href="/profile">
+                    <CgProfile/>
+                    
+                </Link>
             </div>
             <div className={style.headerIcon}>
                 <MdOutlineAccountBalanceWallet/>

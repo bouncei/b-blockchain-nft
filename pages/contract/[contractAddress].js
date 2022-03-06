@@ -177,7 +177,7 @@ const Item = ({
             </div>
 
 
-            <div className='flex flex-wrap'>
+            <div className='flex flex-wrap '>
                 {nftItems.map((nftItem, id) => (
                     <NftCard
                         key={id}

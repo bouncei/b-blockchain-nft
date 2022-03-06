@@ -7,7 +7,7 @@ import { sanityClient, urlFor } from '../sanity'
 import { Route } from 'react-router-dom'
 
 const style = {
-  wrapper: `bg-[#303339] max-w-sm flex-auto w-[14rem] h-[30rem] my-10 mx-5 overflow-hidden cursor-pointer`,
+  wrapper: `bg-[#303339] max-w-sm flex-auto w-[14rem] h-[30rem] my-10 mx-5 overflow-hidden cursor-pointer rounded-xl hover:shadow-2xl hover:bg-grey-100 hover:scale-105 transition transform duration-100 ease-out`,
   imagecontainer: `h-2/3 w-full overflow-hidden`,
   imgtag: `h-full w-full`,
   infoconainer: `h-20 bg-[#313338] p-4 rounded-b-lg flex items-center text-white mx-4`,
@@ -45,19 +45,18 @@ const HomeCard = ({
           className={style.imgtag}
         />
       </div>
+      <div className={style.imagecontainer}>
+        <div className={style.infoconainer}>
+          <img
+            className={style.infoimage}
+            src={urlFor(profileImage)}
+            alt="image"
+          />
 
-      <div className={style.infoconainer}>
-        <img
-          className={style.infoimage}
-          src={urlFor(profileImage)}
-          alt="image"
-        />
-
-        <div className={style.title}>
-          {title}</div>
+          <div className={style.title}>{title}</div>
+        </div>
+        <h4 className="px-3 pb-6 text-sm text-white">{description}</h4>
       </div>
-
-      <h4 className='px-3 text-white text-sm pb-6'>{description}</h4>
     </div>
   )
 }

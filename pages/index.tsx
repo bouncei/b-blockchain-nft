@@ -10,36 +10,19 @@ import { title } from 'process';
 import HomeCard from '../components/HomeCard'
 import { urlFor } from '../sanity';
 import Link from 'next/link';
+import Footer from '../components/Footer'
 
 const style = {
   wrapper: `overflow-hidden`,
   walletConnectWrapper: `flex flex-col justify-center items-center h-screen w-screen bg-[#3b3d42] `,
   button: `border border-[#282b2f] bg-[#2081e2] p-[0.8rem] text-xl font-semibold rounded-lg cursor-pointer text-black`,
   details: `text-lg text-center text=[#282b2f] font-semibold mt-4`,
-  cardgrid: `w-1/3 px-2`
+  cardgrid: `w-1/3 px-2`,
 }
 
 
 
-// export const getServerSideProps = async (sanityClient = client) => {
-//   const query = `*[_type == "marketItems"]`
 
-//   const marketItems = await sanityClient.fetch(query)
-
-//   if (!marketItems.length) {
-//     return {
-//       props: {
-//         marketItems : []
-//       },
-//     }
-//   }else {
-//     return {
-//       props: {
-//         marketItems
-//       }
-//     }
-//   }
-// }
 
 export default function Home({
   imageUrl,
@@ -96,10 +79,15 @@ export default function Home({
 
             <Header />
 
+
             <Hero />
+
+            <br />
+
+           
           </div>
 
-          <main className='max-w-7xl mx-auto px-8 sm:px-16'>
+          <main className='max-w-7xl mx-auto px-8 sm:px-16 mainPageS'>
             <section className='section2 pt-6'>
               <h2 className='text-4xl text-white font-semibold pb-5'>Featured Collections</h2>
 
@@ -130,11 +118,31 @@ export default function Home({
                   profileImage={imageUrl[1]}
                 />
 
+                <br />
+                <br />
+                <br />
+
+
 
               </div>
             </section>
-
           </main>
+
+          <div className='bg-black'>
+            <Footer />
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+          </div>
+           
+
+        
+          
 
         </>
 
