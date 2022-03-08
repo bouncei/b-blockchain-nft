@@ -31,7 +31,9 @@ a {
 }
 
 .section3 {
-    clip-path: polygon(0 30%, 100% 5%, 100% 100%, 0 100%);
+    clip-path: polygon(0 8%, 100% 1%, 100% 93%, 0% 100%);
+    background-color: var(--shade_main);
+
 
 
 }

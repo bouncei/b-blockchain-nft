@@ -11,6 +11,7 @@ import HomeCard from '../components/HomeCard'
 import { urlFor } from '../sanity';
 import Link from 'next/link';
 import Footer from '../components/Footer'
+import SmallCard from '../components/SmallCard'
 
 const style = {
   wrapper: `overflow-hidden`,
@@ -18,7 +19,7 @@ const style = {
   button: `border border-[#282b2f] bg-[#2081e2] p-[0.8rem] text-xl font-semibold rounded-lg cursor-pointer text-black`,
   details: `text-lg text-center text=[#282b2f] font-semibold mt-4`,
   cardgrid: `w-1/3 px-2`,
-  sectionContainer: `max-w-7xl mx-auto px-8 sm:px-16`,
+  sectionContainer: `max-w-7xl mx-auto px-8 sm:px-16 pt-6`,
 }
 
 
@@ -43,7 +44,7 @@ export default function Home({
     )
   }
 
-  console.log(items.contactAddress)
+  console.log("yes", items.contactAddress)
 
 
 
@@ -64,6 +65,8 @@ export default function Home({
 
   }, [address])
 
+  // console.log(items.images)
+
   return (
     <div className={style.wrapper}>
       <Toaster position="top-right" reverseOrder={false} />
@@ -82,16 +85,20 @@ export default function Home({
 
           </div>
 
-          <div className="max-w-7xl mx-auto px-8 sm:px-16 section2" >
-            <section className='pt-6'>
+
+          {/* FEATURED COLLECTION SECTION */}
+          <div className='section2'>
+            <section className={style.sectionContainer} >
+
               <h2 className='text-4xl text-white font-semibold pb-5'>Featured Collections</h2>
 
 
 
               <div className='flex flex-wrap'>
 
-                {items.map((item, id) => (
+                {items?.map((item, id) => (
                   <HomeCard
+                    key={id}
                     bannerImage={item.bannerUrl}
                     collectionItem={item.contractAddress}
                     title={item.title}
@@ -107,49 +114,53 @@ export default function Home({
 
 
               </div>
-            </section>
 
+
+
+
+
+
+            </section>
           </div>
 
-          {/* <div className="bg-[#0a1d2e] section3">
-
-            <div className={style.sectionContainer}>
-              <h2 className='text-4xl text-white font-semibold pb-5'>Featured Collections</h2>
-
-            </div>
-          </div> */}
-
-          <div className="mx-auto px-8 sm:px-16 section3 bg-[#0a1d2e]" >
-            <section className='pt-6'>
-              <h2 className='text-4xl text-white font-semibold p-5 pt-20'>Top Collections</h2>
 
 
+          {/* TOP COLLECTION SECTION */}
+          <div className='section3'>
+            <section className={style.sectionContainer} id="section3">
+              <h2 className='text-4xl text-white font-semibold p-5 py-20'>Top Collections</h2>
 
-              <div className='flex flex-wrap'>
+              <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3'>
 
-
-                <br />
-                <br />
-                <br />
-
-
+                {items?.map((item, id) => (
+                  <SmallCard
+                    key={id}
+                    name={item.title}
+                    image={item.imageUrl}
+                    noOfNfts={item.images}
+                    volumeTraded={item.volumeTraded}
+                  />
+                ))}
+           
 
               </div>
+
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              
+
+
             </section>
-
           </div>
 
-          <div className='bg-black'>
-            <Footer />
+          <Footer />
 
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-
-          </div>
+        
 
 
 
@@ -192,6 +203,8 @@ export async function getServerSideProps() {
     title,
     description,
     contractAddress,
+    volumeTraded,
+    images,
   }`
 
   const items = await sanityClient.fetch(query)
