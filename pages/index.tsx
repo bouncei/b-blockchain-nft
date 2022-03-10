@@ -30,47 +30,47 @@ export default function Home({
   items,
 
 }) {
-  const { address, connectWallet } = useWeb3()
+  // const { address, connectWallet } = useWeb3()
 
-  const welcomeUser = (name, toastHandler = toast) => {    //toast function for welcome user
-    toastHandler.success(
-      `Welcome back${name !== 'Unnamed' ? ` ${name}` : ''}!`,
-      {
-        style: {
-          background: '#04111d',
-          color: '#fff'
-        }
-      }
-    )
-  }
+  // const welcomeUser = (name, toastHandler = toast) => {    //toast function for welcome user
+  //   toastHandler.success(
+  //     `Welcome back${name !== 'Unnamed' ? ` ${name}` : ''}!`,
+  //     {
+  //       style: {
+  //         background: '#04111d',
+  //         color: '#fff'
+  //       }
+  //     }
+  //   )
+  // }
 
-  console.log("yes", items.contactAddress)
+  // console.log("yes", items.contactAddress)
 
 
 
-  useEffect(() => {
-    if (!address) return
-      ; (async () => {           //IIFE(Immediately Invoked Function Expression)
-        const userDoc = {
-          _type: 'users',
-          _id: address,
-          userName: 'Unnamed',
-          walletAddress: address,
+  // useEffect(() => {
+  //   if (!address) return
+  //     ; (async () => {           //IIFE(Immediately Invoked Function Expression)
+  //       const userDoc = {
+  //         _type: 'users',
+  //         _id: address,
+  //         userName: 'Unnamed',
+  //         walletAddress: address,
 
-        }
+  //       }
 
-        const result = await client.createIfNotExists(userDoc)     //Creates a new user in the database
-        welcomeUser(result.userName)
-      })()
+  //       const result = await client.createIfNotExists(userDoc)     //Creates a new user in the database
+  //       welcomeUser(result.userName)
+  //     })()
 
-  }, [address])
+  // }, [address])
 
   // console.log(items.images)
 
   return (
     <div className={style.wrapper}>
       <Toaster position="top-right" reverseOrder={false} />
-      {address ? (   //Conditional Rendering
+      {/* {address ? (   //Conditional Rendering */}
 
         <>
           <Header />
@@ -130,18 +130,56 @@ export default function Home({
             <section className={style.sectionContainer} id="section3">
               <h2 className='text-4xl text-white font-semibold p-5 py-20'>Top Collections</h2>
 
-              <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3'>
+              <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-3'>
 
                 {items?.map((item, id) => (
                   <SmallCard
                     key={id}
+                    index={items.indexOf(item)}
                     name={item.title}
                     image={item.imageUrl}
                     noOfNfts={item.images}
                     volumeTraded={item.volumeTraded}
                   />
                 ))}
-           
+
+                {items?.map((item, id) => (
+                  <SmallCard
+                    key={id}
+                    index={items.indexOf(item)}
+                    name={item.title}
+                    image={item.imageUrl}
+                    noOfNfts={item.images}
+                    volumeTraded={item.volumeTraded}
+                  />
+                ))}
+
+
+
+                {items?.map((item, id) => (
+                  <SmallCard
+                    key={id}
+                    index={items.indexOf(item)}
+                    name={item.title}
+                    image={item.imageUrl}
+                    noOfNfts={item.images}
+                    volumeTraded={item.volumeTraded}
+                  />
+                ))}
+
+
+
+                {items?.map((item, id) => (
+                  <SmallCard
+                    key={id}
+                    index={items.indexOf(item)}
+                    name={item.title}
+                    image={item.imageUrl}
+                    noOfNfts={item.images}
+                    volumeTraded={item.volumeTraded}
+                  />
+                ))}
+
 
               </div>
 
@@ -152,7 +190,7 @@ export default function Home({
               <br />
               <br />
               <br />
-              
+
 
 
             </section>
@@ -160,7 +198,8 @@ export default function Home({
 
           <Footer />
 
-        
+
+
 
 
 
@@ -168,7 +207,7 @@ export default function Home({
 
         </>
 
-      ) : (
+      {/* ) : (
 
         <div className={style.walletConnectWrapper}>
           <button
@@ -185,7 +224,7 @@ export default function Home({
 
           </div>
 
-        </div>
+        </div> */}
 
       )}
     </div>
