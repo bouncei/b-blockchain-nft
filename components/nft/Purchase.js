@@ -10,8 +10,7 @@ const style = {
   buttonText: `ml-2 text-lg font-semibold`,
 }
 
-
-const MakeOffer = ({ isListed, selectedNft, listings, marketPlaceModule }) => {
+const MakeOffer = ({ isListed, selectedNft, listings, buyItem }) => {
   const [selectedMarketNft, setSelectedMarketNft] = useState()
   const [enableButton, setEnableButton] = useState(false)
 
@@ -38,37 +37,37 @@ const MakeOffer = ({ isListed, selectedNft, listings, marketPlaceModule }) => {
       },
     })
 
-  const buyItem = async (
-    listingId = selectedMarketNft.id,
-    quantityDesired = 1,
-    module = marketPlaceModule
-  ) => {
-    console.log(listingId, quantityDesired, module, 'david')
-    // yo RAZA lets goooo!!!
-    //yo Qazi, ok
-    // sure okay about to run it...
-    // just clicked buy now...
-    // still error
-    // where can i see the contract address of the marketplace module
-    // in [nftId.js]
-    await module
-      .buyoutDirectListing({
-        listingId: listingId,
-        quantityDesired: quantityDesired,
-      })
-      .catch((error) => console.error(error))
+  // const buyItem = async (
+  //   listingId = selectedMarketNft.id,
+  //   quantityDesired = 1,
+  //   module = marketPlaceModule
+  // ) => {
+  //   console.log(listingId, quantityDesired, module, 'david')
+  //   // yo RAZA lets goooo!!!
+  //   //yo Qazi, ok
+  //   // sure okay about to run it...
+  //   // just clicked buy now...
+  //   // still error
+  //   // where can i see the contract address of the marketplace module
+  //   // in [nftId.js]
+  //   await module
+  //     .buyoutDirectListing({
+  //       listingId: listingId,
+  //       quantityDesired: quantityDesired,
+  //     })
+  //     .catch((error) => console.error(error))
 
-    confirmPurchase()
-  }
+  //   confirmPurchase()
+  // }
 
   return (
     <div className="flex h-20 w-full items-center rounded-lg border border-[#151c22] bg-[#303339] px-12">
-      <Toaster position="bottom-left" reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={false} />
       {isListed === 'true' ? (
         <>
           <div
             onClick={() => {
-              enableButton ? buyItem(selectedMarketNft.id, 1) : null
+              enableButton ? { buyItem } : null
             }}
             className={`${style.button} bg-[#2081e2] hover:bg-[#42a0ff]`}
           >

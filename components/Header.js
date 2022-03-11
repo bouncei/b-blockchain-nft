@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import appLogo from '../assets/opensea.png'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { CgProfile } from 'react-icons/cg'
@@ -30,11 +30,22 @@ const style = {
 
 const Header = () => {
   const { ab, currentAccount } = useContext(TransactionContext)
+  const [userName, setUserName] = useState()
 
   const value = useContext(TransactionContext)
   const connectWallet = Object.values(value)[0]
 
-  //   console.log({ ab, currentAccount })
+
+
+  useEffect(() => {
+    // const str1 = currentAccount.slice(0,7)
+    // const str2 = currentAccount.slice(35)
+
+    // const finalStr = str1 + "..." + str2
+    setUserName(currentAccount)
+
+  }, [currentAccount])
+
   return (
     <div className={style.wrapper}>
       <Link href="/">
@@ -78,7 +89,7 @@ const Header = () => {
               <CgProfile />
             </Link>
             <div className={`${style.button} ${style.buttonPadding}`}>
-                <div className={style.buttonTextContainer}>0x672...38a</div>
+                <div className={style.buttonTextContainer}>{userName}</div>
             </div>
           </div>
 

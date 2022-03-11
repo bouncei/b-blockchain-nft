@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../../components/Header'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import GeneralDetails from '../../components/nft/GeneralDetails'
 import ItemActivity from '../../components/nft/ItemActivity'
 import { sanityClient } from '../../sanity'
@@ -11,6 +11,7 @@ import { urlFor } from '../../sanity'
 import { IoMdSnow } from 'react-icons/io'
 import { AiOutlineHeart } from 'react-icons/ai'
 import NFTImage from '../../components/nft/NFTImage'
+import { TransactionContext } from '../../context/TransactionContext'
 
 const style = {
   wrapper: `flex flex-col items-center container-lg text-[#e5e8eb]`,
@@ -24,14 +25,35 @@ const style = {
   likesCounter: `flex-1 flex items-center justify-end`,
 }
 
-const Nft = ({nice}) => {
+const Nft = ({ nice }) => {
+  const { formData, handleChange, sendTransaction } =
+    useContext(TransactionContext)
+}
 
-  const [ selectedNft, setSelectedNft ] = useState({})
-  // const [ listings, setlistings ] = useState([])
-  const router = useRouter()
-  const { check } = router.query
+const [selectedNft, setSelectedNft] = useState({})
+// const [ listings, setlistings ] = useState([])
+const router = useRouter()
+const { check } = router.query
 
-  console.log("nice", nice)
+console.log('nice', nice)
+
+
+
+//Payment Configurations
+const price = handleChange(selectedNft.price ? selectedNft.price : 0.1)
+
+const handleSubmit = async (e) => {
+  const { addressTo, amount } = formData
+  e.preventDefault()
+
+  console.log('got address', addressTo)
+  console.log('got amount', amount)
+
+  if (!addressTo || !amount) return
+
+  sendTransaction()
+
+
 
 
   const fetchImageData = async (sanityClient = client) => {
@@ -43,32 +65,26 @@ const Nft = ({nice}) => {
 
     const nftItem = await sanityClient.fetch(query)
 
-    
-    
-    
     console.log(nftItem, '🔥')
-      
+
     await setSelectedNft(nftItem[0])
-    
-    if (nftItem === []){
-      console.log("nothing here")
-    }else {
-      console.log("yessss")
+
+    if (nftItem === []) {
+      console.log('nothing here')
+    } else {
+      console.log('yessss')
     }
-
-
   }
 
   useEffect(() => {
     fetchImageData()
   }, [check])
 
-
   console.log(selectedNft)
 
-  return(
+  return (
     <div>
-        <Header />
+      <Header />
       <div className={style.wrapper}>
         <div className={style.container}>
           <div className={style.topContent}>
@@ -84,10 +100,9 @@ const Nft = ({nice}) => {
                 isListed={router.query.isListed}
                 selectedNft={selectedNft}
                 listings="true"
+                buyItem={e => handleSubmit(e)}
                 // Get the id from the route.query
 
-
-                // marketPlaceModule={marketPlaceModule}
               />
             </div>
           </div>
@@ -98,7 +113,6 @@ const Nft = ({nice}) => {
       {/* <img src={urlFor(selectedNft.imageTest?.asset)}/> */}
     </div>
   )
-
 }
 
 export async function getServerSideProps(context) {
@@ -107,7 +121,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       nice: id.nftId,
-    }
+    },
   }
 }
 

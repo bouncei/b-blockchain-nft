@@ -11,7 +11,18 @@ if (typeof window != 'undefined') {
 
 export const TransactionProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState()
+  const [isLoading, setIsLoading] = useState()
+  const [amount, setAmount] = useState()
+
+  const address = "0x7E219E6f983187EB35F9B2D6816DF084a616d28c"
   
+
+  const formData = {
+    addressTo: {address},
+    amount: {amount}
+  }
+
+
   useEffect(() => {
       checkIfWalletIsConnected()
   }, [])
@@ -46,11 +57,69 @@ export const TransactionProvider = ({ children }) => {
 
   }
 
+
+  const sendTransaction = async (
+    metamask = eth,
+    connectedAccount = currentAccount,
+  ) => {
+    try {
+      if (!metamask) return alert('Please install metamask ')
+      const { addressTo, amount } = formData  // gets a destructured value for the receiver address and amount
+      const transactionContract = getEthereumContract()
+
+      const parsedAmount = ethers.utils.parseEther(amount)
+
+      await metamask.request({
+        method: 'eth_sendTransaction',
+        params: [
+          {
+            from: connectedAccount,
+            to: addressTo,
+            gas: '0x7EF40', // 520000 Gwei
+            value: parsedAmount._hex,
+          },
+        ],
+      })
+
+      const transactionHash = await transactionContract.publishTransaction(
+        addressTo,
+        parsedAmount,
+        `Transferring ETH ${parsedAmount} to ${addressTo}`,
+        'TRANSFER',
+      )
+
+      setIsLoading(true)
+
+      await transactionHash.wait()
+
+      // FOR DB
+      // await saveTransaction(
+      //   transactionHash.hash,
+      //   amount,
+      //   connectedAccount,
+      //   addressTo,
+      // )
+
+      setIsLoading(false)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
+  const handleChange = (price) => {
+    return setAmount(price)
+  }
+
+
   return (
     <TransactionContext.Provider
       value={{
         connectWallet, 
         currentAccount,
+        sendTransaction,
+        handleChange,
+        formData,
       }}
     >
         {children}
