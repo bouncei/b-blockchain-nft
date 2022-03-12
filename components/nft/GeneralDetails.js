@@ -23,11 +23,7 @@ const style = {
 
 const GeneralDetails = ({ selectedNft }) => {
 
-  // {
-  // selectedNft.price
-  // ? selectedNft.price
-  // : 0.1
-  // }
+
   return (
     <div className={style.wrapper}>
       <div className={style.infoContainer}>

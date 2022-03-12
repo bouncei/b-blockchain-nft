@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import profileIcon from '../assets/dk.png'
 
@@ -34,7 +35,10 @@ const Hero = () => {
                         </div>
 
                         <div className={style.ctaContainer}>
-                            <button className={style.accentedButton}>Explore</button>
+                            <Link href="/collections">
+                                <button className={style.accentedButton}>Explore</button>
+                            </Link>
+                            
                             <button className={style.button}>Create</button>
 
                         </div>
@@ -60,7 +64,7 @@ const Hero = () => {
 
                                 <a
                                     className="text-[#1868b7]" 
-                                    href="https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/85237985525734684917380424682378680952947795822601319472306616631339503321089"
+                                    // href="https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/85237985525734684917380424682378680952947795822601319472306616631339503321089"
                                     name="Bouncey"
                                 >
                                     Bouncey

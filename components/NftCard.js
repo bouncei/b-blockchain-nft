@@ -74,7 +74,7 @@ const NftCard = ({title, likes, nftItem, listing}) => {
                                 {
                                     price
                                     ? price
-                                    : 0.1
+                                    : "0.1"
                                 }
                             </div>
                         </div>

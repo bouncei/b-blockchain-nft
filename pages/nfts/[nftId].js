@@ -26,35 +26,31 @@ const style = {
 }
 
 const Nft = ({ nice }) => {
-  const { formData, handleChange, sendTransaction } =
-    useContext(TransactionContext)
-}
+  const { formData, handleChange, sendTransaction } = useContext(TransactionContext)
 
-const [selectedNft, setSelectedNft] = useState({})
-// const [ listings, setlistings ] = useState([])
-const router = useRouter()
-const { check } = router.query
+  // const [ listings, setlistings ] = useState([])
+  const router = useRouter()
+  const { check } = router.query
+  const [selectedNft, setSelectedNft] = useState({})
 
-console.log('nice', nice)
+  console.log('nice', nice)
 
+  //Payment Configurations
+  const price = handleChange(selectedNft.price ? selectedNft.price : "0.001")
 
+  const handleSubmit = async (e) => {
+    const { addressTo, amount } = formData
+    e.preventDefault()
 
-//Payment Configurations
-const price = handleChange(selectedNft.price ? selectedNft.price : 0.1)
+    console.log('got address', addressTo)
+    console.log(amount.amount)
 
-const handleSubmit = async (e) => {
-  const { addressTo, amount } = formData
-  e.preventDefault()
-
-  console.log('got address', addressTo)
-  console.log('got amount', amount)
-
-  if (!addressTo || !amount) return
-
-  sendTransaction()
+    if (!addressTo || !amount) return
 
 
-
+    sendTransaction()
+    // console.log(sendTransaction())
+  }
 
   const fetchImageData = async (sanityClient = client) => {
     const query = `*[_type == "testImage" && _id == "${router.query.nftId}"]{
@@ -99,17 +95,28 @@ const handleSubmit = async (e) => {
               <Purchase
                 isListed={router.query.isListed}
                 selectedNft={selectedNft}
-                listings="true"
-                buyItem={e => handleSubmit(e)}
+                // listings="true"
+                buyItem={(e) => handleSubmit(e)}
                 // Get the id from the route.query
 
               />
+              {/* <div className="border[#151c22] flex h-20 w-full items-center rounded-lg border bg-[#303339] px-12"> */}
+                {/* <div
+                  className="flex hover:bg-[#442a0ff] mr-8 cursor-pointer items-center rounded-lg bg-[#2081e2] py-2 px-12"
+                  onClick={(e) => handleSubmit(e)}
+                > */}
+                  {/* <IoMdWallet className={style.buttonIcon} /> */}
+                  {/* <div className="ml-2 text-lg font-semibold">Buy Now</div> */}
+
+                {/* </div> */}
+              {/* </div> */}
+
             </div>
           </div>
           <ItemActivity />
         </div>
       </div>
-      yesss {selectedNft.caption} {nice}
+      {/* yesss {selectedNft.caption} {nice} */}
       {/* <img src={urlFor(selectedNft.imageTest?.asset)}/> */}
     </div>
   )

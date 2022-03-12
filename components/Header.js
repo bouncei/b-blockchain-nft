@@ -38,11 +38,13 @@ const Header = () => {
 
 
   useEffect(() => {
-    // const str1 = currentAccount.slice(0,7)
-    // const str2 = currentAccount.slice(35)
+    if(!currentAccount) return
 
-    // const finalStr = str1 + "..." + str2
-    setUserName(currentAccount)
+
+    const str1 = currentAccount.slice(0,7)
+    const str2 = currentAccount.slice(35)
+    const finalStr = str1 + "..." + str2
+    setUserName(finalStr)
 
   }, [currentAccount])
 
