@@ -129,7 +129,7 @@ export const TransactionProvider = ({ children }) => {
     return setAmount(price)
   }
 
-  // Collected Item
+  // Adding Selected Nft to set of Collected Item
   const saveTransaction = async (
     txHash,
     amount,
