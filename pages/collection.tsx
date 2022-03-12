@@ -19,7 +19,7 @@ export default function Collection({
  
         <div className={style.wrapper}>
             <Header />
-            <h1 className="text-4xl text-white text-center">COLLECTIONS</h1>
+            <h1 className="text-4xl text-white text-center font-semibold p-5 py-20">COLLECTIONS</h1>
 
             <div className="max-w-7xl mx-auto px-8 sm:px-16">
                 <div className="pt-2">

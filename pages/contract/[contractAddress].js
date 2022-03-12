@@ -136,14 +136,14 @@ const Item = ({
                     <div className={style.statsContainer}>
                         <div className={style.collectionStat}>
                             <div className={style.statValue}>{nftItems.length}</div>
-                            <div className={style.statName}>items</div>
+                            <div className={style.statName}>Items</div>
                         </div>
-                        <div className={style.collectionStat}>
+                        {/* <div className={style.collectionStat}>
                             <div className={style.statValue}>
                                 {allOwners ? allOwners.length : ""}
                             </div>
                             <div className={style.statName}>owners</div>
-                        </div>
+                        </div> */}
                         <div className={style.collectionStat}>
                             <div className={style.statValue}>
                                 <img
@@ -153,7 +153,7 @@ const Item = ({
                                 />
                                 {floorPrice}
                             </div>
-                            <div className={style.statName}>floor price</div>
+                            <div className={style.statName}>Floor Price</div>
                         </div>
 
                         <div className={style.collectionStat}>
@@ -165,7 +165,7 @@ const Item = ({
                                 />
                                 {volumeTraded}.5k
                             </div>
-                            <div className={style.statName}>volume traded</div>
+                            <div className={style.statName}>Volume Traded</div>
                         </div>
                     </div>
                 </div>
