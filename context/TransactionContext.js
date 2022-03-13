@@ -30,6 +30,8 @@ export const TransactionProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState()
   const [isLoading, setIsLoading] = useState()
   const [amount, setAmount] = useState()
+  const [image, setImage] = useState()
+  const [name, setName] = useState()
 
   const address = "0x7E219E6f983187EB35F9B2D6816DF084a616d28c"
   
@@ -39,6 +41,10 @@ export const TransactionProvider = ({ children }) => {
     amount: {amount}
   }
 
+  const NftData = {
+    image: {image},
+    name: {name}
+  }
 
   useEffect(() => {
       checkIfWalletIsConnected()
@@ -81,7 +87,10 @@ export const TransactionProvider = ({ children }) => {
   ) => {
     try {
       if (!metamask) return alert('Please install metamask ')
+      
       const { addressTo, amount } = formData  // gets a destructured value for the receiver address and amount
+      const { image, name } = NftData     //gets a destructured value for the imageUrl and the NFT name from the usestate hook
+
       const transactionContract = getEthereumContract()
 
       const parsedAmount = ethers.utils.parseEther(amount.amount)
@@ -111,12 +120,15 @@ export const TransactionProvider = ({ children }) => {
       await transactionHash.wait()
 
       // FOR DB
-      // await saveTransaction(
-      //   transactionHash.hash,
-      //   amount,
-      //   connectedAccount,
-      //   addressTo,
-      // )
+      await saveTransaction(
+        transactionHash.hash,
+        amount.amount,
+        connectedAccount,
+        parsedAddress,
+        image,
+        name.name,
+        
+      )
 
       setIsLoading(false)
     } catch (error) {
@@ -129,12 +141,22 @@ export const TransactionProvider = ({ children }) => {
     return setAmount(price)
   }
 
+  const handleImage = (image) => {
+    return setImage(image)
+  }
+
+  const handleName = (name) => {
+    return setName(name)
+  }
+
   // Adding Selected Nft to set of Collected Item
   const saveTransaction = async (
     txHash,
     amount,
     fromAddress = currentAccount,
-    toAddress
+    toAddress,
+    image,
+    name,
   ) => {
     const txDoc = {
       _type: 'transactions',
@@ -143,14 +165,29 @@ export const TransactionProvider = ({ children }) => {
       toAddress: toAddress,
       timestamp: new Date(Date.now()).toISOString(),
       txHash: txHash,
+      cImage: image,
+      cName: name,
       amount: parseFloat(amount),
+
     }
 
     await client.createIfNotExists(txDoc)
 
     await client
-      .patch()
+      .patch(currentAccount)
+      .setIfMissing({ transaction: [] })
+      .insert('after', 'transaction[-1]', [
+        {
+          _key: txHash,
+          _ref: txHash,
+          _type: 'reference',
+        },
+
+      ])
+      .commit()
+    return
   }
+
 
   return (
     <TransactionContext.Provider
@@ -159,7 +196,10 @@ export const TransactionProvider = ({ children }) => {
         currentAccount,
         sendTransaction,
         handleChange,
+        handleImage,
+        handleName,
         formData,
+        NftData,
       }}
     >
         {children}

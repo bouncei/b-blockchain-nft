@@ -1,4 +1,7 @@
+import { title } from "process"
 import Header from "../components/Header"
+import NftCard from "../components/NftCard"
+import { sanityClient } from "../sanity"
 
 // const style = {
 //     wrapper: `overflow-hidden`,
@@ -28,7 +31,13 @@ const style = {
 }
 
 
-export default function Profile() {
+export default function Profile({
+    name,
+    contractAddress,
+    timestamp,
+    CollectedItems,
+    
+}) {
     return (
  
         <div className="overflow-hidden">
@@ -77,6 +86,43 @@ export default function Profile() {
             </div>
 
 
+            <div className="flex-flex-wrap">
+                {CollectedItems.map((item, id) => (
+                    <NftCard 
+                        key={id}
+                        nftItem={item}
+                        title={title}
+
+                    />
+                ))}
+
+            </div>
+
+
         </div>
     )
 }
+
+
+
+
+// export const getServerSideProps = async () => {
+//     const query = ``
+
+
+//     const items = await sanityClient.fetch(query)
+
+//     if (!items) {
+//         return {
+//             props: null,
+//             notFound: true,
+//         }
+
+//     } else {
+//         return {
+//             props: {
+
+//             },
+//         }
+//     }
+// }

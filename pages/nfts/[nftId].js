@@ -26,7 +26,7 @@ const style = {
 }
 
 const Nft = ({ nice }) => {
-  const { formData, handleChange, sendTransaction } = useContext(TransactionContext)
+  const { formData, NftData, handleImage, handleName, handleChange, sendTransaction } = useContext(TransactionContext)
 
   // const [ listings, setlistings ] = useState([])
   const router = useRouter()
@@ -37,19 +37,22 @@ const Nft = ({ nice }) => {
 
   //Payment Configurations
   const price = handleChange(selectedNft.price ? selectedNft.price : "0.001")
+  const image = handleImage(selectedNft.imageTest?.asset)
+  const name = handleName(selectedNft.caption)
 
   const handleSubmit = async (e) => {
     const { addressTo, amount } = formData
+    const {image, name} = NftData
     e.preventDefault()
 
-    console.log('got address', addressTo)
-    console.log(amount.amount)
+    console.log('got image', image)
+    console.log('got name', name)
 
-    if (!addressTo || !amount) return
+    if (!addressTo || !amount || !image || !name ) return
 
 
     sendTransaction()
-    // console.log(sendTransaction())
+
   }
 
   const fetchImageData = async (sanityClient = client) => {

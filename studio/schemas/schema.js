@@ -5,6 +5,7 @@ import createSchema from 'part:@sanity/base/schema-creator'
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 import itemImage from './itemImage'
 import testImage from './testImage'
+import transactionSchema from './transactionSchema'
 
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -49,8 +50,20 @@ export default createSchema({
             title: 'Instagram Handle',
             type: 'string',
           },
+          {
+            name: 'transactions',
+            title: 'Transactions',
+            type: 'array',
+            of: [
+              {
+                type: 'reference',
+                to: [{ type: 'transactions' }],
+              },
+            ],
+          },
         ],
       },
+
       {
         name: 'marketItems',
         title: 'Market Items',
@@ -119,6 +132,8 @@ export default createSchema({
       },
       itemImage,
       testImage,
+      transactionSchema,
+    
       
     ]
     /* Your types here! */
