@@ -88,11 +88,14 @@ const Header = () => {
 
           <div className={`${style.headerIcon} ${style.addressProfile}`}>
             <Link href="/profile">
+              <div className='flex items-center'>
+
               <CgProfile />
+              <div className={`${style.button} ${style.buttonPadding}`}>
+                  <div className={style.buttonTextContainer}>{userName}</div>
+              </div>
+              </div>
             </Link>
-            <div className={`${style.button} ${style.buttonPadding}`}>
-                <div className={style.buttonTextContainer}>{userName}</div>
-            </div>
           </div>
 
         </div>

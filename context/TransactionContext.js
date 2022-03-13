@@ -1,9 +1,8 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import {contractABI, contractAddress} from './lib/constants'
+import { contractABI, contractAddress } from './lib/constants'
 import { ethers } from 'ethers'
 import { client } from '../lib/sanityClient'
-
 
 export const TransactionContext = React.createContext()
 
@@ -19,12 +18,11 @@ const getEthereumContract = () => {
   const transactionContract = new ethers.Contract(
     contractAddress,
     contractABI,
-    signer,
+    signer
   )
 
   return transactionContract
 }
-
 
 export const TransactionProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState()
@@ -33,63 +31,74 @@ export const TransactionProvider = ({ children }) => {
   const [image, setImage] = useState()
   const [name, setName] = useState()
 
-  const address = "0x7E219E6f983187EB35F9B2D6816DF084a616d28c"
-  
+  const address = '0x7E219E6f983187EB35F9B2D6816DF084a616d28c'
 
   const formData = {
-    addressTo: {address},
-    amount: {amount}
+    addressTo: { address },
+    amount: { amount },
   }
 
   const NftData = {
-    image: {image},
-    name: {name}
+    image: { image },
+    name: { name },
   }
 
   useEffect(() => {
-      checkIfWalletIsConnected()
+    checkIfWalletIsConnected()
   }, [])
+
+  /**
+   * Create user profile in Sanity
+   */
+  useEffect(() => {
+    if (!currentAccount) return
+    ;(async () => {
+      const userDoc = {
+        _type: 'users',
+        _id: currentAccount,
+        userName: 'Unnamed',
+        walletAddress: currentAccount,
+      }
+
+      await client.createIfNotExists(userDoc)
+    })()
+  }, [currentAccount])
 
   const connectWallet = async (metamask = eth) => {
     try {
-        
       if (!metamask) return alert('Please install metamask')
       const accounts = await metamask.request({ method: 'eth_requestAccounts' })
       setCurrentAccount(accounts[0])
-
     } catch (error) {
       console.log(error)
       throw new Error('No ethereum object.')
     }
   }
 
-
   const checkIfWalletIsConnected = async (metamask = eth) => {
-      try {
-        if (!metamask) return alert('Please install metamask')
-        const accounts = await metamask.request({ method: 'eth_accounts' })
+    try {
+      if (!metamask) return alert('Please install metamask')
+      const accounts = await metamask.request({ method: 'eth_accounts' })
 
-        if (accounts.length) {
-            setCurrentAccount(accounts[0])
-            console.log("wallet is already connected to metamask")
-        }
-      } catch (error) {
-          console.log(error)
-          throw new Error('No ethereum object.')
+      if (accounts.length) {
+        setCurrentAccount(accounts[0])
+        console.log('wallet is already connected to metamask')
       }
-
+    } catch (error) {
+      console.log(error)
+      throw new Error('No ethereum object.')
+    }
   }
-
 
   const sendTransaction = async (
     metamask = eth,
-    connectedAccount = currentAccount,
+    connectedAccount = currentAccount
   ) => {
     try {
       if (!metamask) return alert('Please install metamask ')
-      
-      const { addressTo, amount } = formData  // gets a destructured value for the receiver address and amount
-      const { image, name } = NftData     //gets a destructured value for the imageUrl and the NFT name from the usestate hook
+
+      const { addressTo, amount } = formData // gets a destructured value for the receiver address and amount
+      const { image, name } = NftData //gets a destructured value for the imageUrl and the NFT name from the usestate hook
 
       const transactionContract = getEthereumContract()
 
@@ -112,7 +121,7 @@ export const TransactionProvider = ({ children }) => {
         addressTo.address,
         parsedAmount,
         `Transferring ETH ${parsedAmount} to ${addressTo.address}`,
-        'TRANSFER',
+        'TRANSFER'
       )
 
       setIsLoading(true)
@@ -125,9 +134,8 @@ export const TransactionProvider = ({ children }) => {
         amount.amount,
         connectedAccount,
         parsedAddress,
-        image,
-        name.name,
-        
+        image.image,
+        name.name
       )
 
       setIsLoading(false)
@@ -135,7 +143,6 @@ export const TransactionProvider = ({ children }) => {
       console.log(error)
     }
   }
-
 
   const handleChange = (price) => {
     return setAmount(price)
@@ -156,7 +163,7 @@ export const TransactionProvider = ({ children }) => {
     fromAddress = currentAccount,
     toAddress,
     image,
-    name,
+    name
   ) => {
     const txDoc = {
       _type: 'transactions',
@@ -165,34 +172,31 @@ export const TransactionProvider = ({ children }) => {
       toAddress: toAddress,
       timestamp: new Date(Date.now()).toISOString(),
       txHash: txHash,
-      cImage: image,
+      cImg: image,
       cName: name,
       amount: parseFloat(amount),
-
     }
 
     await client.createIfNotExists(txDoc)
 
     await client
       .patch(currentAccount)
-      .setIfMissing({ transaction: [] })
-      .insert('after', 'transaction[-1]', [
+      .setIfMissing({ transactions: [] })
+      .insert('after', 'transactions[-1]', [
         {
           _key: txHash,
           _ref: txHash,
           _type: 'reference',
         },
-
       ])
       .commit()
     return
   }
 
-
   return (
     <TransactionContext.Provider
       value={{
-        connectWallet, 
+        connectWallet,
         currentAccount,
         sendTransaction,
         handleChange,
@@ -200,10 +204,10 @@ export const TransactionProvider = ({ children }) => {
         handleName,
         formData,
         NftData,
+        isLoading,
       }}
     >
-        {children}
-        
+      {children}
     </TransactionContext.Provider>
   )
 }

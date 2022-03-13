@@ -37,7 +37,7 @@ const Nft = ({ nice }) => {
 
   //Payment Configurations
   const price = handleChange(selectedNft.price ? selectedNft.price : "0.001")
-  const image = handleImage(selectedNft.imageTest?.asset)
+  const image = handleImage(selectedNft.imageTest)
   const name = handleName(selectedNft.caption)
 
   const handleSubmit = async (e) => {
@@ -60,6 +60,7 @@ const Nft = ({ nice }) => {
       caption,
       imageTest,
       price,
+      "forImage": imageTest.asset->url,
     }`
 
     const nftItem = await sanityClient.fetch(query)
