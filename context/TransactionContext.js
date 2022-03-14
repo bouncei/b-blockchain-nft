@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import { contractABI, contractAddress } from './lib/constants'
 import { ethers } from 'ethers'
 import { client } from '../lib/sanityClient'
+import { useRouter } from 'next/router'
+import { useLocation } from 'react-router-dom'
 
 export const TransactionContext = React.createContext()
 
@@ -30,6 +32,8 @@ export const TransactionProvider = ({ children }) => {
   const [amount, setAmount] = useState()
   const [image, setImage] = useState()
   const [name, setName] = useState()
+  const router = useRouter()
+  // const location = useLocation()
 
   const address = '0x7E219E6f983187EB35F9B2D6816DF084a616d28c'
 
@@ -104,6 +108,7 @@ export const TransactionProvider = ({ children }) => {
 
       const parsedAmount = ethers.utils.parseEther(amount.amount)
       const parsedAddress = addressTo.address
+
 
       await metamask.request({
         method: 'eth_sendTransaction',
@@ -192,6 +197,18 @@ export const TransactionProvider = ({ children }) => {
       .commit()
     return
   }
+
+
+  // Preloader Modal for trandaction in progress
+  useEffect(() => {
+    if(isLoading) {
+      // console.log(window.location.href)
+      router.push(`${window.location.href}/?loading=${currentAccount}`)
+    }else{
+      router.push('/profile')
+    }
+  }, [isLoading])
+
 
   return (
     <TransactionContext.Provider

@@ -25,10 +25,10 @@ const NftCard = ({title, likes, nftItem, listing}) => {
     const [isListed, setIsListed] = useState(false)
     const [price, setPrice] = useState(0)
 
-    // console.log(nftItem)
-    // console.log(nftItem.imageTest.asset)
-
+    console.log(nftItem)
     const id = Object.values(nftItem)[1]
+
+    console.log("yes to id", id)
     
     // console.log(id[1])
 

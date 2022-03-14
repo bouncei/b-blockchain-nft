@@ -1,6 +1,7 @@
 import Header from "../components/Header"
 import CollectionCard from "../components/CollectionCard"
 import { sanityClient } from "../sanity"
+import Footer from "../components/Footer"
 
 const style = {
     wrapper: `overflow-hidden`,
@@ -29,7 +30,11 @@ export default function Collection({
                                 key={id}
                                 image={item.image}
                                 title={item.title} 
-                                contractAddress={item.contactAddress}
+                                contractAddress={
+                                    item.contractAddress
+                                    ? item.contractAddress
+                                    : undefined
+                                }
                             />
 
                         ))}
@@ -41,7 +46,7 @@ export default function Collection({
                 </div>
             </div>
 
-            
+            <Footer/>
 
         </div>
     )
@@ -71,9 +76,6 @@ export async function getStaticProps() {
     }else {
         return {
             props: {
-                // title : items.title,
-                // images: items.images,
-                // contractAddress: items.contactAddress,
                 items: items,
             },
         }

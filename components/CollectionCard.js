@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Router from 'next/router'
-import React, { cloneElement } from 'react'
+import React, { cloneElement, useState } from 'react'
 import { MdLocalPrintshop } from 'react-icons/md'
 import { sanityClient, urlFor } from '../sanity'
 // import { urlFor } from '../sanity';
@@ -20,10 +20,34 @@ const CollectionCard = ({
   image,
   contractAddress,
 }) => {
-  // const refer = `contract/${collectionItem}`
-  // console.log(refer)
+  // const [selectedCollection, setSelectedCollection] = useState({})
 
-  console.log(title)
+
+  // // const router = useRouter()
+  // // const { check } = router.query
+  // const fetchImageData = async (sanityClient = client) => {
+  //   const query = `*[_type == "marketItems" && _id == "${contractAddress}"]{
+  //     caption,
+  //     imageTest,
+  //     price,
+  //     "forImage": imageTest.asset->url,
+  //   }`
+
+  //   const nftItem = await sanityClient.fetch(query)
+
+  //   console.log(nftItem, '🔥')
+
+  //   await setSelectedCollection(nftItem[0])
+
+  // }
+
+
+  // useEffect(() => {
+  //   if(!contractAddress) return
+  //   fetchImageData()
+  // }, [contractAddress])
+
+  console.log(contractAddress)
 
   return (
     <div

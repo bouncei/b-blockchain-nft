@@ -12,9 +12,15 @@ import { IoMdSnow } from 'react-icons/io'
 import { AiOutlineHeart } from 'react-icons/ai'
 import NFTImage from '../../components/nft/NFTImage'
 import { TransactionContext } from '../../context/TransactionContext'
+import Modal from 'react-modal'
+import TransactionLoader from '../../components/TransactionLoader'
+import Footer from '../../components/Footer'
+
+
+Modal.setAppElement('#__next')
 
 const style = {
-  wrapper: `flex flex-col items-center container-lg text-[#e5e8eb]`,
+  wrapper: `flex flex-col items-center container-lg text-[#e5e8eb] overflow-hidden`,
   container: `container p-6`,
   topContent: `flex`,
   nftImgContainer: `flex-1 mr-4`,
@@ -23,6 +29,22 @@ const style = {
   topBar: `bg-[#303339] p-2 rounded-t-lg border-[#151c22] border`,
   topBarContent: `flex items-center`,
   likesCounter: `flex-1 flex items-center justify-end`,
+}
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: '#0a0b0d',
+    padding: 0,
+    border: 'none',
+  },
+  overlay: {
+    backgroundColor: 'rgba(10, 11, 13, 0.75)',
+  },
 }
 
 const Nft = ({ nice }) => {
@@ -120,8 +142,11 @@ const Nft = ({ nice }) => {
           <ItemActivity />
         </div>
       </div>
-      {/* yesss {selectedNft.caption} {nice} */}
-      {/* <img src={urlFor(selectedNft.imageTest?.asset)}/> */}
+      <Modal isOpen={!!router.query.loading} style={customStyles}>
+        <TransactionLoader />
+      </Modal>
+
+      <Footer />
     </div>
   )
 }

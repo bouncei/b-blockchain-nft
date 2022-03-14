@@ -9,6 +9,7 @@ import { CgWebsite } from 'react-icons/cg'
 import { AiOutlineInstagram, AiOutlineTwitter } from 'react-icons/ai'
 import { HiDotsVertical } from "react-icons/hi"
 import { BsFillShareFill } from 'react-icons/bs'
+import ProfileCard from '../components/ProfileCard'
 
 
 // const style = {
@@ -165,15 +166,15 @@ export default function Profile() {
             <hr/>
             <br/>
 
-            <div className="flex-flex-wrap">
+            <div className="flex flex-wrap">
                 {transactionHistory &&
                     transactionHistory?.map((transaction, id) => (
-                        // <NftCard 
-                        //     key={id}
+                        <ProfileCard 
+                            key={id}
+                            nftItem={transaction}
+                        />
 
-                        // />
 
-                        
                     ))
                 }
 

@@ -74,17 +74,21 @@ const Header = () => {
         // </div>
 
         <div className={style.headerItems}>
-          <Link href="/collection">
+          <Link href="/collections">
             <div className={style.headerItem}> Collections </div>
           </Link>
 
+          <Link href="/allnfts">
+            <div className={style.headerItem}> NFTs </div>
+          </Link>
+{/* 
           <Link href="/contract/mutant-ape-yacht-club">
             <div className={style.headerItem}> Stats </div>
-          </Link>
+          </Link> */}
 
-          <Link href="nice/joshme5">
+          {/* <Link href="nice/joshme5">
             <div className={style.headerItem}> Resources </div>
-          </Link>
+          </Link> */}
 
           <div className={`${style.headerIcon} ${style.addressProfile}`}>
             <Link href="/profile">

@@ -7,6 +7,7 @@ import { AiOutlineInstagram, AiOutlineTwitter } from 'react-icons/ai'
 import { HiDotsVertical } from "react-icons/hi"
 import NewImage from "../../components/NftCard";
 import NftCard from "../../components/NftCard";
+import Footer from '../../components/Footer'
 
 
 
@@ -45,9 +46,13 @@ const Item = ({
     floorPrice,
     allOwners,
     description,
+    params
  }) => {
     // const router = useRouter()
     // const { address } = router.query
+    console.log(typeof params)
+    console.log(Object.values(params)[0])
+    console.log("these are the params", params)
 
     console.log(creator)
     // console.log("nice", imageUrl)
@@ -198,17 +203,20 @@ const Item = ({
                     />
                 })} */}
             </div>
-
+            
+            <Footer />
 
         </div>
 
     )
 }
 
-export const getServerSideProps = async() => {
+export const getServerSideProps = async(context) => {
+    const { params } = context
+    const id = Object.values(params)[0]
     
 
-    const query = `*[_type == "marketItems" && contractAddress == "mutant-ape-yacht-club"][0] {
+    const query = `*[_type == "marketItems" && contractAddress == "${id}"][0] {
         "imageUrl": profileImage.asset->url,
         "bannerImageUrl": bannerImage.asset->url,
         volumeTraded,
@@ -243,6 +251,7 @@ export const getServerSideProps = async() => {
                 floorPrice: items.floorPrice,
                 allOwners: items.allOwners,
                 description: items.description,
+                params,
 
             },
         }
