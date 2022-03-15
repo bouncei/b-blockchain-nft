@@ -6,6 +6,9 @@ import { AiOutlineSearch } from 'react-icons/ai'
 import { CgProfile } from 'react-icons/cg'
 import { MdOutlineAccountBalanceWallet } from 'react-icons/md'
 import { TransactionContext } from '../context/TransactionContext'
+import toast, { Toaster } from "react-hot-toast";// Receiving toast
+
+
 
 const style = {
   wrapper: `bg-[#04111d] w-screen px-[1.2rem] py-[0.8rem] flex `,
@@ -37,6 +40,7 @@ const Header = () => {
 
 
 
+
   useEffect(() => {
     if(!currentAccount) return
 
@@ -45,6 +49,8 @@ const Header = () => {
     const str2 = currentAccount.slice(35)
     const finalStr = str1 + "..." + str2
     setUserName(finalStr)
+
+
 
   }, [currentAccount])
 
@@ -67,6 +73,8 @@ const Header = () => {
           placeholder="Search items, collections and accounts"
         />
       </div>
+      <Toaster position="top-center" reverseOrder={false} />
+
 
       {currentAccount ? (
         // <div className={`${style.button} ${style.buttonPadding}`}>

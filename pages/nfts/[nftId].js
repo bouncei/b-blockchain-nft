@@ -47,20 +47,23 @@ const customStyles = {
   },
 }
 
-const Nft = ({ nice }) => {
+const Nft = ({ selectedNft }) => {
   const { formData, NftData, handleImage, handleName, handleChange, sendTransaction } = useContext(TransactionContext)
 
   // const [ listings, setlistings ] = useState([])
   const router = useRouter()
   const { check } = router.query
-  const [selectedNft, setSelectedNft] = useState({})
+  // const [selectedNft, setSelectedNft] = useState({})
 
-  console.log('nice', nice)
+  // console.log('nice', nice)
+
+  // console.log("price", selectedNft.price)
 
   //Payment Configurations
   const price = handleChange(selectedNft.price ? selectedNft.price : "0.001")
   const image = handleImage(selectedNft.imageTest)
   const name = handleName(selectedNft.caption)
+
 
   const handleSubmit = async (e) => {
     const { addressTo, amount } = formData
@@ -77,31 +80,36 @@ const Nft = ({ nice }) => {
 
   }
 
-  const fetchImageData = async (sanityClient = client) => {
-    const query = `*[_type == "testImage" && _id == "${router.query.nftId}"]{
-      caption,
-      imageTest,
-      price,
-    }`
+  console.log("my stuff", price, image, name)
 
-    const nftItem = await sanityClient.fetch(query)
 
-    console.log(nftItem, '🔥')
+  // const fetchImageData = async (sanityClient = client) => {
+  //   const query = `*[_type == "testImage" && _id == "${router.query.nftId}"]{
+  //     caption,
+  //     imageTest,
+  //     price,
+  //   }`
 
-    await setSelectedNft(nftItem[0])
+  //   const nftItem = await sanityClient.fetch(query)
 
-    if (nftItem === []) {
-      console.log('nothing here')
-    } else {
-      console.log('yessss')
-    }
-  }
+  //   console.log(nftItem, '🔥')
 
-  useEffect(() => {
-    fetchImageData()
-  }, [check])
+  //   await setSelectedNft(nftItem[0])
 
-  console.log(selectedNft)
+  //   if (nftItem === []) {
+  //     console.log('nothing here')
+  //   } else {
+  //     console.log('yessss')
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   fetchImageData()
+  // }, [check])
+
+  console.log(typeof selectedNft)
+  console.log("collection", selectedNft)
+  // console.log("This is nice bros", nice)
 
   return (
     <div>
@@ -125,16 +133,7 @@ const Nft = ({ nice }) => {
                 // Get the id from the route.query
 
               />
-              {/* <div className="border[#151c22] flex h-20 w-full items-center rounded-lg border bg-[#303339] px-12"> */}
-                {/* <div
-                  className="flex hover:bg-[#442a0ff] mr-8 cursor-pointer items-center rounded-lg bg-[#2081e2] py-2 px-12"
-                  onClick={(e) => handleSubmit(e)}
-                > */}
-                  {/* <IoMdWallet className={style.buttonIcon} /> */}
-                  {/* <div className="ml-2 text-lg font-semibold">Buy Now</div> */}
 
-                {/* </div> */}
-              {/* </div> */}
 
             </div>
           </div>
@@ -153,10 +152,29 @@ const Nft = ({ nice }) => {
 export async function getServerSideProps(context) {
   const id = context.params
 
-  return {
-    props: {
-      nice: id.nftId,
-    },
+
+  const query = `*[_type == "testImage" && _id == "${id.nftId}"][0]{
+    caption,
+    imageTest,
+    price,
+  }`
+
+
+  const items = await sanityClient.fetch(query)
+
+
+  if (!items) {
+    return {
+        props: null,
+        notFound: true,
+    }
+
+  }else {
+    return {
+      props:{
+        selectedNft: items
+      }
+    }
   }
 }
 

@@ -37,7 +37,8 @@ const ProfileCard = ({nftItem}) => {
         <img
           src={urlFor(nftItem.cImg.asset).auto('format')}
           alt={nftItem.cName}
-          className= 'w-full h-full'
+          height="266.83"
+          width="266.83"
         />
       </div>
 

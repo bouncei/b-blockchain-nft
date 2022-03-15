@@ -4,7 +4,7 @@ import { contractABI, contractAddress } from './lib/constants'
 import { ethers } from 'ethers'
 import { client } from '../lib/sanityClient'
 import { useRouter } from 'next/router'
-import { useLocation } from 'react-router-dom'
+import WelcomeUser from '../components/toast/WelcomeUser'
 
 export const TransactionContext = React.createContext()
 
@@ -65,6 +65,9 @@ export const TransactionProvider = ({ children }) => {
       }
 
       await client.createIfNotExists(userDoc)
+
+
+      WelcomeUser(userDoc.userName)
     })()
   }, [currentAccount])
 
@@ -161,6 +164,8 @@ export const TransactionProvider = ({ children }) => {
     return setName(name)
   }
 
+
+
   // Adding Selected Nft to set of Collected Item
   const saveTransaction = async (
     txHash,
@@ -184,6 +189,10 @@ export const TransactionProvider = ({ children }) => {
 
     await client.createIfNotExists(txDoc)
 
+    
+
+
+
     await client
       .patch(currentAccount)
       .setIfMissing({ transactions: [] })
@@ -200,14 +209,14 @@ export const TransactionProvider = ({ children }) => {
 
 
   // Preloader Modal for trandaction in progress
-  // useEffect(() => {
-  //   if(isLoading) {
-  //     // console.log(window.location.href)
-  //     router.push(`${window.location.href}/?loading=${currentAccount}`)
-  //   }else{
-  //     router.push('/profile')
-  //   }
-  // }, [isLoading])
+  useEffect(() => {
+    if(isLoading) {
+      // console.log(window.location.href)
+      router.push(`${window.location.href}/?loading=${currentAccount}`)
+    }else{
+      router.push('/profile')
+    }
+  }, [isLoading])
 
 
   return (

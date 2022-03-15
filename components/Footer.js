@@ -18,7 +18,11 @@ function Footer() {
             <div className="flex cursor-pointer items-center">
               <Image src={appLogo} height={40} width={40} />
 
-              <div className="ml-[0.8rem] text-2xl font-bold"><span className='hover:text-white hover:scale-102 transition transform duration-200 ease-out  '>BaseMint</span></div>
+              <div className="ml-[0.8rem] text-2xl font-bold">
+                <span className="hover:scale-102 transform transition duration-200 ease-out hover:text-white  ">
+                  BaseMint
+                </span>
+              </div>
             </div>
             {/* <h1 className='text-xl font-bold cursor-pointer'>BaseMint</h1> */}
           </Link>
@@ -58,10 +62,28 @@ function Footer() {
 
         <div className={style.mainDiv}>
           <h5 className={style.h5Element}>HOST</h5>
-          <p className={style.ptag}>a</p>
-          <p className={style.ptag}>a</p>
-          <p className={style.ptag}>a</p>
-          <p className={style.ptag}>a</p>
+          <Link href="/collection">
+            <div className="transform cursor-pointer text-base transition duration-200 ease-out hover:text-white hover:underline ">
+              Explore
+            </div>
+          </Link>
+
+          <Link href="/">
+            <div className="transform cursor-pointer text-base transition duration-200 ease-out hover:text-white hover:underline ">
+              Auctions
+            </div>
+          </Link>
+
+          <Link href="/">
+            <div className="transform cursor-pointer text-base transition duration-200 ease-out hover:text-white hover:underline ">
+              Offers
+            </div>
+          </Link>
+          <Link href="/">
+            <div className="transform cursor-pointer text-base transition duration-200 ease-out hover:text-white hover:underline ">
+              Stats
+            </div>
+          </Link>
         </div>
 
         <div className={style.mainDiv}>

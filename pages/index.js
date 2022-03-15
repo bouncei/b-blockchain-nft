@@ -1,6 +1,6 @@
 import { useWeb3 } from '@3rdweb/hooks'
 import Head from 'next/head'
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { sanityClient } from "../sanity";
 import Header from '../components/Header'
 import Hero from '../components/Hero'
@@ -12,6 +12,7 @@ import { urlFor } from '../sanity';
 import Link from 'next/link';
 import Footer from '../components/Footer'
 import SmallCard from '../components/SmallCard'
+import { TransactionContext } from '../context/TransactionContext';
 
 const style = {
   wrapper: `overflow-hidden`,
@@ -30,46 +31,18 @@ export default function Home({
   items,
 
 }) {
-  // const { address, connectWallet } = useWeb3()
 
-  // const welcomeUser = (name, toastHandler = toast) => {    //toast function for welcome user
-  //   toastHandler.success(
-  //     `Welcome back${name !== 'Unnamed' ? ` ${name}` : ''}!`,
-  //     {
-  //       style: {
-  //         background: '#04111d',
-  //         color: '#fff'
-  //       }
-  //     }
-  //   )
-  // }
-
-  // console.log("yes", items.contactAddress)
-
+  const { isLoading, currentAccount }  = useContext(TransactionContext) 
 
 
   // useEffect(() => {
-  //   if (!address) return
-  //     ; (async () => {           //IIFE(Immediately Invoked Function Expression)
-  //       const userDoc = {
-  //         _type: 'users',
-  //         _id: address,
-  //         userName: 'Unnamed',
-  //         walletAddress: address,
+  //   setIs
 
-  //       }
-
-  //       const result = await client.createIfNotExists(userDoc)     //Creates a new user in the database
-  //       welcomeUser(result.userName)
-  //     })()
-
-  // }, [address])
-
-  // console.log(items.images)
+  // }, [isLoading, currentAccount])
 
   return (
     <div className={style.wrapper}>
-      <Toaster position="top-right" reverseOrder={false} />
+
       {/* {address ? (   //Conditional Rendering */}
 
         <>
