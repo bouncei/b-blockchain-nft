@@ -74,6 +74,10 @@ const Header = () => {
         // </div>
 
         <div className={style.headerItems}>
+          <Link href="/">
+            <div className={style.headerItem}> Home </div>
+          </Link>
+
           <Link href="/collections">
             <div className={style.headerItem}> Collections </div>
           </Link>

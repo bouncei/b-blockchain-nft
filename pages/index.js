@@ -207,26 +207,7 @@ export default function Home({
 
         </>
 
-      {/* ) : (
-
-        <div className={style.walletConnectWrapper}>
-          <button
-            className={style.button}
-            onClick={() => connectWallet("injected")}  //Prompts User to connect their metamask wallet
-
-          >
-            Connect Wallet
-
-          </button>
-
-          <div className={style.details}>
-            Please connect your metamask wallet
-
-          </div>
-
-        </div> */}
-
-      )}
+ 
     </div>
 
   )

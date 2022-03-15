@@ -43,7 +43,7 @@ const style = {
 export default function Profile() {
 
     const { isLoading, currentAccount } = useContext(TransactionContext)
-    const [transactionHistory, setTransactionHistory] = useState<any[]>([])
+    const [transactionHistory, setTransactionHistory] = useState([])
     const [userName, setUserName] = useState()
 
     useEffect(() => {

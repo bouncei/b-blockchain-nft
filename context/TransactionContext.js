@@ -200,14 +200,14 @@ export const TransactionProvider = ({ children }) => {
 
 
   // Preloader Modal for trandaction in progress
-  useEffect(() => {
-    if(isLoading) {
-      // console.log(window.location.href)
-      router.push(`${window.location.href}/?loading=${currentAccount}`)
-    }else{
-      router.push('/profile')
-    }
-  }, [isLoading])
+  // useEffect(() => {
+  //   if(isLoading) {
+  //     // console.log(window.location.href)
+  //     router.push(`${window.location.href}/?loading=${currentAccount}`)
+  //   }else{
+  //     router.push('/profile')
+  //   }
+  // }, [isLoading])
 
 
   return (

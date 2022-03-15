@@ -82,7 +82,6 @@ const Nft = ({ nice }) => {
       caption,
       imageTest,
       price,
-      "forImage": imageTest.asset->url,
     }`
 
     const nftItem = await sanityClient.fetch(query)

@@ -1,6 +1,5 @@
 import Header from "../components/Header"
 import { sanityClient } from "../sanity"
-import AllNftCard from '../components/AllNftCard'
 import NftCard from "../components/NftCard"
 import Footer from "../components/Footer"
 
