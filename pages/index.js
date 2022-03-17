@@ -116,7 +116,7 @@ export default function Home({
                   />
                 ))}
 
-                {items?.map((item, id) => (
+                {/* {items?.map((item, id) => (
                   <SmallCard
                     key={id}
                     index={items.indexOf(item)}
@@ -151,7 +151,7 @@ export default function Home({
                     noOfNfts={item.images}
                     volumeTraded={item.volumeTraded}
                   />
-                ))}
+                ))} */}
 
 
               </div>
