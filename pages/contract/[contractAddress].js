@@ -50,11 +50,11 @@ const Item = ({
  }) => {
     // const router = useRouter()
     // const { address } = router.query
-    console.log(typeof params)
-    console.log(Object.values(params)[0])
-    console.log("these are the params", params)
+    // console.log(typeof params)
+    // console.log(Object.values(params)[0])
+    // console.log("these are the params", params)
 
-    console.log(creator)
+    // console.log(creator)
     // console.log("nice", imageUrl)
 
     // console.log(nftItems.id)

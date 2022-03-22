@@ -1,13 +1,20 @@
 import { urlFor } from '../sanity'
 import Image from 'next/image'
+import Router from 'next/router'
 
 const style = {
   imgClass: `relative h-[3.25rem] rounded-lg w-[3.25rem] object-contain`,
 }
 
-const SmallCard = ({ name, noOfNfts, image, volumeTraded, index }) => {
+const SmallCard = ({ name, noOfNfts, image, volumeTraded, index, collectionItem }) => {
   return (
-    <div className="flex items-center justify-between m-2 mt-5 p-2 bg-[#04111d] border-solid border-2 border-[#687da7] space-x-10 rounded-xl cursor-pointer hover:scale-105 transition transform duration-200 ease-out ">
+    <div className="flex items-center justify-between m-2 mt-5 p-2 bg-[#04111d] border-solid border-2 border-[#687da7] space-x-10 rounded-xl cursor-pointer hover:scale-105 transition transform duration-200 ease-out "
+    onClick={() => {
+      Router.push({
+        pathname: `contract/${collectionItem}`,
+      })
+    }}
+  >
       {/* LEFT */}
       <div className='flex items-center space-x-3'>
         <div className='text-[#718096]'>

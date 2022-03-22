@@ -1,18 +1,18 @@
 import { useWeb3 } from '@3rdweb/hooks'
 import Head from 'next/head'
 import { useContext, useEffect } from 'react'
-import { sanityClient } from "../sanity";
+import { sanityClient } from '../sanity'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
-import { client } from '../lib/sanityClient';
-import toast, { Toaster } from "react-hot-toast";// Receiving toast
-import { title } from 'process';
+import { client } from '../lib/sanityClient'
+import toast, { Toaster } from 'react-hot-toast' // Receiving toast
+import { title } from 'process'
 import HomeCard from '../components/HomeCard'
-import { urlFor } from '../sanity';
-import Link from 'next/link';
+import { urlFor } from '../sanity'
+import Link from 'next/link'
 import Footer from '../components/Footer'
 import SmallCard from '../components/SmallCard'
-import { TransactionContext } from '../context/TransactionContext';
+// import { TransactionContext } from '../context/TransactionContext'
 
 const style = {
   wrapper: `overflow-hidden`,
@@ -23,17 +23,8 @@ const style = {
   sectionContainer: `max-w-7xl mx-auto px-8 sm:px-16 pt-6`,
 }
 
-
-
-
-
-export default function Home({
-  items,
-
-}) {
-
-  const { isLoading, currentAccount }  = useContext(TransactionContext) 
-
+export default function Home({ items }) {
+  // const { isLoading, currentAccount } = useContext(TransactionContext)
 
   // useEffect(() => {
   //   setIs
@@ -42,34 +33,25 @@ export default function Home({
 
   return (
     <div className={style.wrapper}>
-
       {/* {address ? (   //Conditional Rendering */}
 
-        <>
-          <Header />
-          <div className='section1'>
+      <>
+        <Header />
+        <div className="section1">
+          <Hero />
 
+          <br />
+        </div>
 
+        {/* FEATURED COLLECTION SECTION */}
+        <div className="section2">
+          <section className={style.sectionContainer}>
+            <h2 className="pb-5 text-4xl font-semibold text-white">
+              Featured Collections
+            </h2>
 
-            <Hero />
-
-            <br />
-
-
-          </div>
-
-
-          {/* FEATURED COLLECTION SECTION */}
-          <div className='section2'>
-            <section className={style.sectionContainer} >
-
-              <h2 className='text-4xl text-white font-semibold pb-5'>Featured Collections</h2>
-
-
-
-              <div className='flex flex-wrap'>
-
-                {items?.map((item, id) => (
+            <div className="flex flex-wrap">
+              {/* {items?.map((item, id) => (
                   <HomeCard
                     key={id}
                     bannerImage={item.bannerUrl}
@@ -78,118 +60,77 @@ export default function Home({
                     description={item.description}
                     profileImage={item.imageUrl}
                   />
-                ))}
-
-                <br />
-                <br />
-                <br />
-
-
-
-              </div>
-
-
-
-
-
-
-            </section>
-          </div>
-
-
-
-          {/* TOP COLLECTION SECTION */}
-          <div className='section3'>
-            <section className={style.sectionContainer} id="section3">
-              <h2 className='text-4xl text-white font-semibold p-5 py-20'>Top Collections</h2>
-
-              <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-3'>
-
-                {items?.map((item, id) => (
-                  <SmallCard
-                    key={id}
-                    index={items.indexOf(item)}
-                    name={item.title}
-                    image={item.imageUrl}
-                    noOfNfts={item.images}
-                    volumeTraded={item.volumeTraded}
-                  />
-                ))}
-
-                {/* {items?.map((item, id) => (
-                  <SmallCard
-                    key={id}
-                    index={items.indexOf(item)}
-                    name={item.title}
-                    image={item.imageUrl}
-                    noOfNfts={item.images}
-                    volumeTraded={item.volumeTraded}
-                  />
-                ))}
-
-
-
-                {items?.map((item, id) => (
-                  <SmallCard
-                    key={id}
-                    index={items.indexOf(item)}
-                    name={item.title}
-                    image={item.imageUrl}
-                    noOfNfts={item.images}
-                    volumeTraded={item.volumeTraded}
-                  />
-                ))}
-
-
-
-                {items?.map((item, id) => (
-                  <SmallCard
-                    key={id}
-                    index={items.indexOf(item)}
-                    name={item.title}
-                    image={item.imageUrl}
-                    noOfNfts={item.images}
-                    volumeTraded={item.volumeTraded}
-                  />
                 ))} */}
 
+              <HomeCard
+                bannerImage={items[0].bannerUrl}
+                collectionItem={items[0].contractAddress}
+                title={items[0].title}
+                description={items[0].description}
+                profileImage={items[0].imageUrl}
+              />
 
-              </div>
+              <HomeCard
+                bannerImage={items[3].bannerUrl}
+                collectionItem={items[3].contractAddress}
+                title={items[3].title}
+                description={items[3].description}
+                profileImage={items[3].imageUrl}
+              />
+
+              <HomeCard
+                bannerImage={items[2].bannerUrl}
+                collectionItem={items[2].contractAddress}
+                title={items[2].title}
+                description={items[2].description}
+                profileImage={items[2].imageUrl}
+              />
 
               <br />
               <br />
               <br />
-              <br />
-              <br />
-              <br />
-              <br />
+            </div>
+          </section>
+        </div>
 
+        {/* TOP COLLECTION SECTION */}
+        <div className="section3">
+          <section className={style.sectionContainer} id="section3">
+            <h2 className="p-5 py-20 text-4xl font-semibold text-white">
+              Top Collections
+            </h2>
 
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+              {items?.map((item, id) => (
+                <SmallCard
+                  key={id}
+                  index={items.indexOf(item)}
+                  name={item.title}
+                  image={item.imageUrl}
+                  noOfNfts={item.images}
+                  volumeTraded={item.volumeTraded}
+                  collectionItem={item.contractAddress}
+                />
+              ))}
+            </div>
 
-            </section>
-          </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+          </section>
+        </div>
 
-          <Footer />
-
-
-
-
-
-
-
-
-        </>
-
- 
+        <Footer />
+      </>
     </div>
-
   )
 }
 
-
-
 export async function getServerSideProps() {
-
   const query = `*[ _type == "marketItems" ]{
     "imageUrl" : profileImage.asset,
     "bannerUrl" : bannerImage.asset,
@@ -201,7 +142,6 @@ export async function getServerSideProps() {
   }`
 
   const items = await sanityClient.fetch(query)
-
 
   if (!items) {
     return {

@@ -56,8 +56,8 @@ export default function Collection({
 
 
 
-export async function getStaticProps() {
-
+export async function getServerSideProps() {
+    
     const query = `*[_type == "marketItems"]{
         title,
         "image": profileImage.asset,

@@ -10,6 +10,8 @@ export const TransactionContext = React.createContext()
 
 let eth
 
+
+
 if (typeof window != 'undefined') {
   eth = window.ethereum
 }
@@ -207,16 +209,24 @@ export const TransactionProvider = ({ children }) => {
     return
   }
 
+  console.log("checking the isLoadng", typeof isLoading)
 
   // Preloader Modal for trandaction in progress
   useEffect(() => {
+
+    if(typeof isLoading === 'undefined') return
+    
     if(isLoading) {
       // console.log(window.location.href)
       router.push(`${window.location.href}/?loading=${currentAccount}`)
     }
-    // else{
-    //   router.push('/profile')
-    // }
+    else{
+
+      WelcomeUser("transaction")
+      
+      router.push('/profile')
+    }
+
   }, [isLoading])
 
 

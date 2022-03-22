@@ -9,7 +9,7 @@ import { Route } from 'react-router-dom'
 const style = {
   wrapper: `bg-[#303339] max-w-sm flex-auto w-[14rem] h-[36rem] my-10 mx-5 overflow-hidden cursor-pointer rounded-sm hover:shadow-2xl hover:bg-grey-100 hover:scale-105 transition transform duration-100 ease-out`,
   imagecontainer: `h-2/3 w-full overflow-hidden`,
-  imgtag: `h-full w-full`,
+  imgtag: `h-full w-full object-cover`,
   infoconainer: `h-20 bg-[#313338] p-4 rounded-b-lg flex items-center text-white mx-4`,
   infoimage: `h-[3.25rem] rounded-full w-[3.25rem] object-contain`,
   title: `flex flex-col justify-center ml-4 text-white`,

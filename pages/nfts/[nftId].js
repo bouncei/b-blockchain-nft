@@ -15,6 +15,8 @@ import { TransactionContext } from '../../context/TransactionContext'
 import Modal from 'react-modal'
 import TransactionLoader from '../../components/TransactionLoader'
 import Footer from '../../components/Footer'
+// import TransactionContext from '../../context/TransactionContext'
+import WelcomeUser from '../../components/toast/WelcomeUser'
 
 
 Modal.setAppElement('#__next')
@@ -38,7 +40,7 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     transform: 'translate(-50%, -50%)',
-    backgroundColor: '#0a0b0d',
+    backgroundColor: '#ffffff',
     padding: 0,
     border: 'none',
   },
@@ -48,16 +50,16 @@ const customStyles = {
 }
 
 const Nft = ({ selectedNft }) => {
-  const { formData, NftData, handleImage, handleName, handleChange, sendTransaction } = useContext(TransactionContext)
-
+  const { formData, NftData, handleImage, handleName, handleChange, sendTransaction, currentAccount } = useContext(TransactionContext)
+  
   // const [ listings, setlistings ] = useState([])
+  // console.log("location", window.location.href)
+
+
   const router = useRouter()
   const { check } = router.query
   // const [selectedNft, setSelectedNft] = useState({})
-
-  // console.log('nice', nice)
-
-  // console.log("price", selectedNft.price)
+  
 
   //Payment Configurations
   const price = handleChange(selectedNft.price ? selectedNft.price : "0.001")
@@ -65,54 +67,27 @@ const Nft = ({ selectedNft }) => {
   const name = handleName(selectedNft.caption)
 
 
+ 
   const handleSubmit = async (e) => {
     const { addressTo, amount } = formData
     const {image, name} = NftData
     e.preventDefault()
 
-    console.log('got image', image)
-    console.log('got name', name)
+    // console.log('got image', image)
+    // console.log('got name', name)
 
     if (!addressTo || !amount || !image || !name ) return
-
-
+    
+    
+    
     sendTransaction()
+ 
 
   }
 
-  console.log("my stuff", price, image, name)
-
-
-  // const fetchImageData = async (sanityClient = client) => {
-  //   const query = `*[_type == "testImage" && _id == "${router.query.nftId}"]{
-  //     caption,
-  //     imageTest,
-  //     price,
-  //   }`
-
-  //   const nftItem = await sanityClient.fetch(query)
-
-  //   console.log(nftItem, '🔥')
-
-  //   await setSelectedNft(nftItem[0])
-
-  //   if (nftItem === []) {
-  //     console.log('nothing here')
-  //   } else {
-  //     console.log('yessss')
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   fetchImageData()
-  // }, [check])
-
-  console.log(typeof selectedNft)
-  console.log("collection", selectedNft)
-  // console.log("This is nice bros", nice)
 
   return (
-    <div>
+    <div className='overflow-hidden'>
       <Header />
       <div className={style.wrapper}>
         <div className={style.container}>
@@ -140,11 +115,11 @@ const Nft = ({ selectedNft }) => {
           <ItemActivity />
         </div>
       </div>
-      <Modal isOpen={!!router.query.loading} style={customStyles}>
-        <TransactionLoader />
-      </Modal>
 
       <Footer />
+      <Modal isOpen={!! router.query.loading} style={customStyles}>
+        {/* <TransactionLoader /> */}
+      </Modal>
     </div>
   )
 }

@@ -48,7 +48,7 @@ export default function AllNfts({
 
 
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 
     const query = `*[_type == "testImage"]`
 

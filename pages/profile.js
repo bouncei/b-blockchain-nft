@@ -10,6 +10,7 @@ import { AiOutlineInstagram, AiOutlineTwitter } from 'react-icons/ai'
 import { HiDotsVertical } from "react-icons/hi"
 import { BsFillShareFill } from 'react-icons/bs'
 import ProfileCard from '../components/ProfileCard'
+import profile from '../assets/profile.png'
 
 
 // const style = {
@@ -83,7 +84,7 @@ export default function Profile() {
             <div className={style.bannerImageContainer}>
                 <img
                     className={style.bannerImage}
-                    src='https://via.placeholder.com/200'
+                    src='https://images.pexels.com/photos/998641/pexels-photo-998641.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
                     alt="banner"
                 />
 
@@ -94,8 +95,9 @@ export default function Profile() {
                 <div className={style.midRow}>
                     <img
                         className={style.profileImg}
-                        src='https://via.placeholder.com/200'
+ 
                         alt="profile image"
+                        src="https://media.istockphoto.com/photos/empty-studio-background-picture-id1022270894?k=20&m=1022270894&s=612x612&w=0&h=xI0yw0x8rZLsPFkaEL6WmGGSPRK4u8Jq3zUCY9QRgpM="
                     />
 
                 </div>
