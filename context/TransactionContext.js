@@ -5,6 +5,7 @@ import { ethers } from 'ethers'
 import { client } from '../lib/sanityClient'
 import { useRouter } from 'next/router'
 import WelcomeUser from '../components/toast/WelcomeUser'
+import Loading from '../components/toast/Loading'
 
 export const TransactionContext = React.createContext()
 
@@ -135,6 +136,7 @@ export const TransactionProvider = ({ children }) => {
       )
 
       setIsLoading(true)
+      Loading()
 
       await transactionHash.wait()
 
@@ -221,10 +223,9 @@ export const TransactionProvider = ({ children }) => {
       router.push(`${window.location.href}/?loading=${currentAccount}`)
     }
     else{
-
-      WelcomeUser("transaction")
       
       router.push('/profile')
+      // WelcomeUser("transaction")
     }
 
   }, [isLoading])
