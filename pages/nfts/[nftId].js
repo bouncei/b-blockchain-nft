@@ -62,7 +62,7 @@ const Nft = ({ selectedNft }) => {
   
 
   //Payment Configurations
-  const price = handleChange(selectedNft.price ? selectedNft.price : "0.001")
+  const price = handleChange(selectedNft.price ? selectedNft.price : "0.1")
   const image = handleImage(selectedNft.imageTest)
   const name = handleName(selectedNft.caption)
 
