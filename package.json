@@ -1,9 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "dev": "node server.js",
+    "dev": "next dev",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "next start"
   },
   "dependencies": {
     "@3rdweb/hooks": "^1.9.2",
