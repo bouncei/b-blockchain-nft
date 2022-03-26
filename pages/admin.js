@@ -5,7 +5,7 @@ import AdminTable from '../components/AdminTable'
 export default function Admin({ items }) {
   //   console.log('check', items)
   return (
-    <div className="overflow-hidden">
+    <div >
       <Header />
       <h1 className="p-5 py-20 text-center text-4xl font-semibold text-white">
         ADMIN
@@ -25,7 +25,7 @@ export default function Admin({ items }) {
             </tr>
           </thead>
           <br />
-          <tbody className="text-xl ">
+          <tbody className="text-2xl ">
             {items.map((item, id) => (
               <AdminTable
                 index={items.indexOf(item)}

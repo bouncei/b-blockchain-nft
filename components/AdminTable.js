@@ -4,7 +4,7 @@ const AdminTable = ({ address, index }) => {
       <tr>
           <td>{index}</td>
           {/* <td>{name}</td> */}
-          <td>&nbsp; {address}</td>
+          <td>&nbsp; {address} &nbsp; &nbsp;</td>
       </tr>
       
   )
