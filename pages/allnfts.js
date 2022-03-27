@@ -8,7 +8,7 @@ import Footer from "../components/Footer"
 export default function AllNfts({
     items,
 }) {
-    console.log(items)
+    // console.log(items)
 
     return (
         <div className="overflow-hidden">

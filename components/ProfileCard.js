@@ -30,7 +30,7 @@ const ProfileCard = ({nftItem}) => {
     setPrice(nftItem.amount)
   }, [nftItem])
 
-  console.log(nftItem)
+  // console.log(nftItem)
   return (
     <div className={style.wrapper}>
       <div className={style.imgContainer}>

@@ -25,7 +25,7 @@ const HomeCard = ({
   // const refer = `contract/${collectionItem}`
   // console.log(refer)
 
-  console.log(collectionItem)
+  // console.log(collectionItem)
 
   return (
     <div
