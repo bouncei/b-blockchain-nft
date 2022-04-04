@@ -21,9 +21,8 @@ const style = {
   divider: `border-r-2`,
 }
 
+// General Details for a selected nft item.
 const GeneralDetails = ({ selectedNft }) => {
-
-
   return (
     <div className={style.wrapper}>
       <div className={style.infoContainer}>
