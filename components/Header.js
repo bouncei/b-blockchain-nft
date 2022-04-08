@@ -18,12 +18,12 @@ const style = {
   searchBar: `flex flex-1 mx-[0.8rem] w-max-[520px] items-center md:bg-[#363840] rounded-[0.8rem] hover:bg-[#4c505c]`,
   searchIcon: `text-[#8a939b] mx-3 font-bold text-lg`,
   searchInput: `h-[2.6rem] w-full border-0 bg-transparent outline-0 ring-0 px-2 pl-0 text-[#e6e8eb] placeholder:text-[#8a939b]`,
-  headerItems: ` md:flex md:items-center justify-end bg-white md:bg-inherit z-[-1] md:z-auto md:static absolute left-0 h-1/3 w-full md:w-auto rounded-xl md:opacity-100 opacity-0`,
-  MenuItems: ` md:flex md:items-center justify-end bg-white md:bg-inherit md:z-auto md:static absolute left-0 h-1/3 w-full md:w-auto rounded-xl md:opacity-100 opacity-100`,
+  headerItems: ` md:flex md:items-center justify-end bg-white md:bg-inherit z-[1] md:z-auto md:static absolute left-0 h-1/3 w-full md:w-auto rounded-xl md:opacity-100 opacity-0`,
+  MenuItems: ` md:flex md:items-center justify-end bg-[#0a1d2e] md:bg-inherit z-[1] md:z-auto md:static absolute left-0 h-1/3 w-full md:w-auto rounded-xl md:opacity-100 opacity-100 border-solid border-2 border-indigo-600 md:border-0 mt-3`,
 
-  headerItem: `text-white px-4 font-bold text-[#c8cacd] hover:text-white duration-500 cursor-pointer py-2`,
+  headerItem: `text-white px-4 font-bold md:text-[#c8cacd] hover:text-white duration-500 cursor-pointer py-2`,
   headerIcon: `text-[#8a939b] text-3xl font-black px-4 hover:text-white duration-500 cursor-pointer`,
-  addressProfile: `flex items-center space-x-2 pt-5 md:pt-0`,
+  addressProfile: `flex items-center space-x-2 pt-0 md:pt-0`,
 
   buttonsContainer: `flex w-1/4 justify-end items-center`,
   button: `flex items-center md:bg-[#191B1F] bg-none rounded-2xl mx-2 text-[0.9rem] font-semibold cursor-pointer`,
@@ -68,11 +68,26 @@ const Header = () => {
           </span>
         </Link>
 
-        <span className="block cursor-pointer text-3xl text-white md:hidden">
+        <span className=" block flex items-center justify-center text-3xl text-white md:hidden">
+          <div className={`${style.headerIcon} ${style.addressProfile} `}>
+            <Link href="/profile">
+              <div className="flex items-center">
+                <CgProfile />
+                <div className={`${style.button} ${style.buttonPadding}`}>
+                  <div className={style.buttonTextContainer}>{userName}</div>
+                </div>
+              </div>
+            </Link>
+          </div>
+
           <div className="text-white" onClick={() => setcheckMenu(!checkMenu)}>
-            <div className="">
-              {checkMenu ? <HiMenu /> : <AiOutlineClose />}
-            </div>
+            {currentAccount ? (
+              <div className="cursor-pointer">
+                {checkMenu ? <HiMenu /> : <AiOutlineClose />}
+              </div>
+            ) : (
+              ''
+            )}
           </div>
         </span>
       </div>

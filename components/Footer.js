@@ -3,7 +3,7 @@ import Link from 'next/link'
 import appLogo from '../assets/opensea.png'
 
 const style = {
-  mainContainer: `grid grid-cols-1 md:grid-cols-4 gap-y-10 px-32 py-14 text-gray-600 space-x-4`,
+  mainContainer: ` grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-10 px-[40px] md:px-[45px] lg:px-[55px] xl:px-32 py-14 text-gray-600 space-x-4`,
   mainDiv: `space-y-4 text-grey-800 text-xs`,
   h5Element: `font-bold text-lg `,
   ptag: `text-base text-left`,
@@ -15,11 +15,11 @@ function Footer() {
       <div className={style.mainContainer}>
         <div className={style.mainDiv}>
           <Link href="/">
-            <div className="flex cursor-pointer items-center">
+            <div className="flex cursor-pointer items-center space-x-4">
               <Image src={appLogo} height={40} width={40} />
 
-              <div className="ml-[0.8rem] text-2xl font-bold">
-                <span className="hover:scale-102 transform transition duration-200 ease-out hover:text-white  ">
+              <div className=" text-2xl font-bold">
+                <span className="hover:scale-102 transform pr-4 transition duration-200 ease-out hover:text-white ">
                   BaseMint
                 </span>
               </div>
@@ -36,21 +36,21 @@ function Footer() {
         </div>
         <div className={style.mainDiv}>
           <h5 className={style.h5Element}>GENERAL</h5>
-          <Link href="/collection">
+          <Link href="/collections">
             <div className="transform cursor-pointer text-base transition duration-200 ease-out hover:text-white hover:underline ">
               Explore
             </div>
           </Link>
 
-          <Link href="/">
+          <Link href="/collections">
             <div className="transform cursor-pointer text-base transition duration-200 ease-out hover:text-white hover:underline ">
-              Auctions
+              All Collections
             </div>
           </Link>
 
-          <Link href="/">
+          <Link href="/allnfts">
             <div className="transform cursor-pointer text-base transition duration-200 ease-out hover:text-white hover:underline ">
-              Offers
+              All NFTs
             </div>
           </Link>
           <Link href="/">
@@ -62,7 +62,7 @@ function Footer() {
 
         <div className={style.mainDiv}>
           <h5 className={style.h5Element}>HOST</h5>
-          <Link href="/collection">
+          <Link href="/collections">
             <div className="transform cursor-pointer text-base transition duration-200 ease-out hover:text-white hover:underline ">
               Explore
             </div>
@@ -88,7 +88,7 @@ function Footer() {
 
         <div className={style.mainDiv}>
           <h5 className={style.h5Element}>ECOSYSTEM</h5>
-          <Link href="/collection">
+          <Link href="/collections">
             <div className="transform cursor-pointer text-base transition duration-200 ease-out hover:text-white hover:underline ">
               Buy Mint Token
             </div>
