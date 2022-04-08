@@ -45,8 +45,8 @@ const Header = () => {
   useEffect(() => {
     if (!currentAccount) return
 
-    const str1 = currentAccount.slice(0, 7)
-    const str2 = currentAccount.slice(35)
+    const str1 = currentAccount.slice(0, 4)
+    const str2 = currentAccount.slice(38)
     const finalStr = str1 + '...' + str2
     setUserName(finalStr)
   }, [currentAccount])
@@ -69,25 +69,26 @@ const Header = () => {
         </Link>
 
         <span className=" block flex items-center justify-center text-3xl text-white md:hidden">
-          <div className={`${style.headerIcon} ${style.addressProfile} `}>
-            <Link href="/profile">
-              <div className="flex items-center">
-                <CgProfile />
-                <div className={`${style.button} ${style.buttonPadding}`}>
-                  <div className={style.buttonTextContainer}>{userName}</div>
+          {currentAccount ? (
+            <div className={`${style.headerIcon} ${style.addressProfile} `}>
+              <Link href="/profile">
+                <div className="flex items-center">
+                  <CgProfile />
+
+                  <div className={`${style.button} ${style.buttonPadding}`}>
+                    <div className={style.buttonTextContainer}>{userName}</div>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          </div>
+              </Link>
+            </div>
+          ) : (
+            ''
+          )}
 
           <div className="text-white" onClick={() => setcheckMenu(!checkMenu)}>
-            {currentAccount ? (
-              <div className="cursor-pointer">
-                {checkMenu ? <HiMenu /> : <AiOutlineClose />}
-              </div>
-            ) : (
-              ''
-            )}
+            <div className="cursor-pointer">
+              {checkMenu ? <HiMenu /> : <AiOutlineClose />}
+            </div>
           </div>
         </span>
       </div>
@@ -103,6 +104,24 @@ const Header = () => {
         />
       </div>
       <Toaster position="top-center" reverseOrder={false} />
+
+      {!currentAccount ? (
+        <div className={`${checkMenu ? style.headerItems : style.MenuItems}`}>
+          <Link href="/">
+            <div className={style.headerItem}> Home </div>
+          </Link>
+
+          <Link href="/collections">
+            <div className={style.headerItem}> Collections </div>
+          </Link>
+
+          <Link href="/allnfts">
+            <div className={style.headerItem}> NFTs </div>
+          </Link>
+        </div>
+      ) : (
+        ''
+      )}
 
       {currentAccount ? (
         // <div className={`${style.button} ${style.buttonPadding}`}>
@@ -121,14 +140,7 @@ const Header = () => {
           <Link href="/allnfts">
             <div className={style.headerItem}> NFTs </div>
           </Link>
-          {/* 
-          <Link href="/contract/mutant-ape-yacht-club">
-            <div className={style.headerItem}> Stats </div>
-          </Link> */}
 
-          {/* <Link href="nice/joshme5">
-            <div className={style.headerItem}> Resources </div>
-          </Link> */}
           {checkMenu ? (
             <div className={`${style.headerIcon} ${style.addressProfile} `}>
               <Link href="/profile">
