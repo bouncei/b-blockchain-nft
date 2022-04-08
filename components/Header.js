@@ -19,7 +19,7 @@ const style = {
   searchIcon: `text-[#8a939b] mx-3 font-bold text-lg`,
   searchInput: `h-[2.6rem] w-full border-0 bg-transparent outline-0 ring-0 px-2 pl-0 text-[#e6e8eb] placeholder:text-[#8a939b]`,
   headerItems: ` md:flex md:items-center justify-end bg-white md:bg-inherit z-[1] md:z-auto md:static absolute left-0 h-1/3 w-full md:w-auto rounded-xl md:opacity-100 opacity-0`,
-  MenuItems: ` md:flex md:items-center justify-end bg-[#0a1d2e] md:bg-inherit z-[1] md:z-auto md:static absolute left-0 h-1/3 w-full md:w-auto rounded-xl md:opacity-100 opacity-100 border-solid border-2 border-indigo-600 md:border-0 mt-3`,
+  MenuItems: ` md:flex md:items-center justify-end bg-inherit md:bg-inherit z-[1] md:z-auto md:static absolute left-0  w-full md:w-auto rounded-xl md:opacity-100 opacity-100 mt-3`,
 
   headerItem: `text-white px-4 font-bold md:text-[#c8cacd] hover:text-white duration-500 cursor-pointer py-2`,
   headerIcon: `text-[#8a939b] text-3xl font-black px-4 hover:text-white duration-500 cursor-pointer`,
@@ -129,17 +129,20 @@ const Header = () => {
           {/* <Link href="nice/joshme5">
             <div className={style.headerItem}> Resources </div>
           </Link> */}
-
-          <div className={`${style.headerIcon} ${style.addressProfile}`}>
-            <Link href="/profile">
-              <div className="flex items-center">
-                <CgProfile />
-                <div className={`${style.button} ${style.buttonPadding}`}>
-                  <div className={style.buttonTextContainer}>{userName}</div>
+          {checkMenu ? (
+            <div className={`${style.headerIcon} ${style.addressProfile} `}>
+              <Link href="/profile">
+                <div className="flex items-center">
+                  <CgProfile />
+                  <div className={`${style.button} ${style.buttonPadding}`}>
+                    <div className={style.buttonTextContainer}>{userName}</div>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          </div>
+              </Link>
+            </div>
+          ) : (
+            ''
+          )}
         </div>
       ) : (
         <div
