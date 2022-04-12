@@ -15,39 +15,8 @@ const style = {
   title: `flex flex-col justify-center ml-4 text-white`,
 }
 
-const CollectionCard = ({
-  title,
-  image,
-  contractAddress,
-}) => {
-  // const [selectedCollection, setSelectedCollection] = useState({})
-
-
-  // // const router = useRouter()
-  // // const { check } = router.query
-  // const fetchImageData = async (sanityClient = client) => {
-  //   const query = `*[_type == "marketItems" && _id == "${contractAddress}"]{
-  //     caption,
-  //     imageTest,
-  //     price,
-  //     "forImage": imageTest.asset->url,
-  //   }`
-
-  //   const nftItem = await sanityClient.fetch(query)
-
-  //   console.log(nftItem, '🔥')
-
-  //   await setSelectedCollection(nftItem[0])
-
-  // }
-
-
-  // useEffect(() => {
-  //   if(!contractAddress) return
-  //   fetchImageData()
-  // }, [contractAddress])
-
-  console.log(contractAddress)
+const CollectionCard = ({ title, image, contractAddress }) => {
+  // console.log(contractAddress)
 
   return (
     <div
@@ -66,7 +35,7 @@ const CollectionCard = ({
         />
       </div>
       <div className={style.imagecontainer}>
-          <div className='text-white text-center text-2xl py-8'>{title}</div>
+        <div className="py-8 text-center text-2xl text-white">{title}</div>
       </div>
     </div>
   )

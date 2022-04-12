@@ -5,8 +5,8 @@ import createSchema from 'part:@sanity/base/schema-creator'
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 import itemImage from './itemImage'
 import testImage from './testImage'
+import blogImage from './blogImage'
 import transactionSchema from './transactionSchema'
-
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -14,7 +14,8 @@ export default createSchema({
   name: 'default',
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
-  types: schemaTypes.concat([
+  types: schemaTypes.concat(
+    [
       {
         name: 'users',
         title: 'Users',
@@ -120,21 +121,58 @@ export default createSchema({
             name: 'nftImage',
             title: 'NFT Image',
             type: 'array',
-            of : [{type: 'itemImage'}],
+            of: [{ type: 'itemImage' }],
           },
           {
             name: 'images',
-            title: "Images",
-            type: "array",
+            title: 'Images',
+            type: 'array',
             of: [{ type: 'reference', to: [{ type: 'testImage' }] }],
-          },          
+          },
         ],
       },
       itemImage,
       testImage,
       transactionSchema,
-    
-      
+
+      {
+        name: 'blogs',
+        title: 'Blogs',
+        type: 'document',
+
+        fields: [
+          {
+            name: 'blogTitle',
+            title: 'Title',
+            type: 'string',
+          },
+
+          {
+            name: 'description',
+            title: 'Descripton',
+            type: 'string',
+          },
+          {
+            name: 'date',
+            title: 'Date',
+            type: 'string',
+          },
+          {
+            name: 'mainImage',
+            title: 'Main Image',
+            type: 'image',
+          },
+
+          {
+            name: 'blogDetails',
+            title: 'Blog Details',
+            type: 'array',
+            of: [{ type: 'blogImage' }],
+          },
+        ],
+      },
+
+      blogImage,
     ]
     /* Your types here! */
   ),

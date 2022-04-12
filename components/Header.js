@@ -118,6 +118,10 @@ const Header = () => {
           <Link href="/allnfts">
             <div className={style.headerItem}> NFTs </div>
           </Link>
+
+          <Link href="/blog">
+            <div className={style.headerItem}>NFT Blog</div>
+          </Link>
         </div>
       ) : (
         ''
