@@ -5,7 +5,7 @@ import createSchema from 'part:@sanity/base/schema-creator'
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 import itemImage from './itemImage'
 import testImage from './testImage'
-import blogImage from './blogImage'
+import blogPost from './blogPost'
 import transactionSchema from './transactionSchema'
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -152,6 +152,13 @@ export default createSchema({
             title: 'Descripton',
             type: 'string',
           },
+
+          {
+            name: 'another',
+            title: "Another",
+            type: "string",
+          },
+
           {
             name: 'date',
             title: 'Date',
@@ -167,12 +174,12 @@ export default createSchema({
             name: 'blogDetails',
             title: 'Blog Details',
             type: 'array',
-            of: [{ type: 'blogImage' }],
+            of: [{ type: 'reference', to: [{ type: "blogPost" }] }],
           },
         ],
       },
 
-      blogImage,
+      blogPost,
     ]
     /* Your types here! */
   ),

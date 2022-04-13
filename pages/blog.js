@@ -21,11 +21,12 @@ function Blog({ items }) {
             news and tips and tricks all brought to you by your friendly,
             talkative NFT marketplace on BSC.
           </p>
+          <div className='flex flex-wrap'>
 
-          {items.map((item) => {
-            ;<BlogCard key={id} image={item.mainImage} />
-          })}
-          <BlogCard />
+            <BlogCard image={items.mainImage} title={items.blogTitle} description={items.description} date={items.date} />
+
+
+          </div>
         </div>
 
         {/* Reviews */}
@@ -41,6 +42,7 @@ export async function getServerSideProps(context) {
   console.log(id)
 
   const query = `*[_type == "blogs" ][0]{
+    blogTitle,
     mainImage,
     blogDetails,
     date,

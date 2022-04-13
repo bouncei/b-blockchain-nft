@@ -1,9 +1,23 @@
+import { type } from "os";
+
 export default {
-  name: 'blogImage',
-  title: 'BLog Image',
-  type: 'image',
+  name: 'blogPost',
+  title: 'BLog Post',
+  type: 'document',
   fields: [
     {
+      name: "blogImage",
+      title: "Blog Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      
+
+    },
+    {
+
+
       name: 'caption',
       title: 'Caption',
       type: 'string',
@@ -17,7 +31,5 @@ export default {
       type: 'string',
     },
   ],
-  options: {
-    hotspot: true,
-  },
+
 }

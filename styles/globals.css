@@ -22,11 +22,12 @@ a {
 
 }
 
+
 * {
     box-sizing: border-box;
 }
 
-.section1{
+.section1 {
     clip-path: polygon(0 0, 100% 0, 100% 94%, 0 98%);
 }
 
@@ -38,11 +39,11 @@ a {
 
 }
 
-.section2 h2, .section3 h2 {
+.section2 h2,
+.section3 h2 {
     display: flex;
     justify-content: center;
     color: #ffff
-
 }
 
 
