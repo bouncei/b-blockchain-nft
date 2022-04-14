@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { sanityClient } from '../sanity'
-import BlogCard from '../components/BlogCard'
+import BlogCard from '../components/blog/BlogCard'
 
 function Blog({ items }) {
   console.log(items)

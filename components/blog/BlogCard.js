@@ -1,10 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
 import Router from 'next/router'
-import { urlFor } from '../sanity'
+import { urlFor } from '../../sanity'
+import BlogFooter from './BlogFooter'
 
 const style = {
-  wrapper: `bg-[#303339] max-w-sm flex-auto w-[14rem] h-[full] my-10 mx-5 overflow-hidden cursor-pointer rounded-sm hover:shadow-2xl hover:bg-grey-100 hover:scale-105 transition transform duration-100 ease-out`,
+  wrapper: `bg-[#303339] max-w-sm flex-auto w-[14rem] h-[full] my-10 mx-5 overflow-hidden cursor-pointer rounded-sm hover:shadow-2xl hover:bg-grey-100 hover:scale-105 transition transform duration-500 ease-out`,
   imagecontainer: `h-2/3 w-full overflow-hidden`,
   imgtag: `h-full w-full object-cover`,
   infoconainer: `h-20 bg-[#313338] p-4 rounded-b-lg flex items-center text-white mx-4`,
@@ -22,7 +23,7 @@ function BlogCard({ image, title, date, description }) {
         })
       }}
     >
-      <div class="max-w-sm rounded-lg border border-gray-200 bg-white shadow-md">
+      <div class="max-w-sm rounded-lg border border-gray-200 bg-white shadow-md ease-out duration-100">
         <img
           class="rounded-t-lg"
           src={urlFor(image).auto('format')}
@@ -45,6 +46,8 @@ function BlogCard({ image, title, date, description }) {
 
         </div>
       </div>
+
+      <BlogFooter />
     </div>
   )
 }
