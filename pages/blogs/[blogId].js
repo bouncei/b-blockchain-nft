@@ -1,12 +1,12 @@
 import React from 'react'
 import { useId } from 'react'
 import { useRouter } from 'next/router'
-import BlogCard from '../../components/BlogCard'
+// import BlogCard from '../../components/BlogCard'
 import { sanityClient } from '../../sanity'
 import { urlFor } from '../../sanity'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-
+import BlogFooter from '../../components/blog/BlogFooter'
 
 const style = {
   pText: `text-2xl font-normal text-grey-700 pb-10`,
@@ -50,6 +50,15 @@ const Item = ({ details, mainImage, description, another, date }) => {
 
 
           {/* Reviews */}
+          <div></div>
+
+          <hr className='border border-gray-700 ' />
+          <br />
+          <br />
+
+
+          <BlogFooter />
+
 
         </div>
 

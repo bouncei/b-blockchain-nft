@@ -47,7 +47,7 @@ function BlogCard({ image, title, date, description }) {
         </div>
       </div>
 
-      <BlogFooter />
+
     </div>
   )
 }

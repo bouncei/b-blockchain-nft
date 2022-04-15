@@ -3,6 +3,8 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { sanityClient } from '../sanity'
 import BlogCard from '../components/blog/BlogCard'
+import BlogFooter from '../components/blog/BlogFooter'
+import ReviewCard from '../components/blog/ReviewCard'
 
 function Blog({ items }) {
   console.log(items)
@@ -27,9 +29,24 @@ function Blog({ items }) {
 
 
           </div>
+
         </div>
 
-        {/* Reviews */}
+        {/* Reviews(use Grid) */}
+
+        <div className='flex items-center justify-center flex-wrap'>
+
+          <ReviewCard />
+          <ReviewCard />
+          <ReviewCard />
+          <ReviewCard />
+          <ReviewCard />
+
+
+
+        </div>
+
+
       </div>
 
       <Footer />
