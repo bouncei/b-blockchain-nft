@@ -1,13 +1,44 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { sanityClient } from '../sanity'
 import BlogCard from '../components/blog/BlogCard'
 import BlogFooter from '../components/blog/BlogFooter'
 import ReviewCard from '../components/blog/ReviewCard'
+import SmallCard from '../components/SmallCard'
 
 function Blog({ items }) {
-  console.log(items)
+  // console.log(items)
+
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    if (!items) return
+
+    setData(items)
+
+
+
+  }, [items])
+
+
+  console.log("quarried Data", data)
+
+
+
+  const nums = [1, 2, 3, 4];
+
+  const doubles = nums.map(num => {
+    return num * 2;
+  });
+
+  console.log(doubles); // [2, 4, 6, 8]
+
+
+  console.log(typeof (doubles))
+
+
+
   return (
     <div className="overflow-hidden">
       <Header />
@@ -30,21 +61,16 @@ function Blog({ items }) {
 
           </div>
 
-        </div>
+          {/* Reviews(use Grid) */}
 
-        {/* Reviews(use Grid) */}
 
-        <div className='flex items-center justify-center flex-wrap'>
 
-          <ReviewCard />
-          <ReviewCard />
-          <ReviewCard />
-          <ReviewCard />
-          <ReviewCard />
+
 
 
 
         </div>
+
 
 
       </div>
