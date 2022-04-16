@@ -1,22 +1,67 @@
 import React from 'react'
+import { urlFor } from '../../sanity'
+import { useState } from 'react'
+
+const style = {
+    imgClass: `relative h-[3.25rem] rounded-lg w-[3.25rem] object-contain`,
+}
 
 
-function ReviewCard() {
+
+function ReviewCard({ name, image, stars, index, collectionItem }) {
+    const [displayStars, setStars] = useState()
+
+    const starList = []
+
+    for (var i = 0; i < stars; i++) {
+        starList.push("⭐")
+
+
+    }
+
+    console.log("complet star list", starList);
+
+    // setStars(starList)
+    // console.log(displayStars)
+
     return (
-
-        <div class="max-w-sm mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-lg">
-            <div class="md:flex">
-                <div class="md:shrink-0">
-                    <img class="h-48 w-full object-cover md:h-full md:w-48" src="https://media.istockphoto.com/photos/empty-studio-background-picture-id1022270894?k=20&m=1022270894&s=612x612&w=0&h=xI0yw0x8rZLsPFkaEL6WmGGSPRK4u8Jq3zUCY9QRgpM=" alt="Man looking at item at a store" />
+        <div className="flex items-center justify-between m-2 mt-5 p-2 bg-[#04111d] border-solid border-2 border-[#687da7] space-x-10 rounded-xl cursor-pointer hover:scale-105 transition transform duration-500 ease-out "
+        >
+            {/* LEFT */}
+            <div className='flex items-center space-x-3'>
+                <div className='text-[#718096]'>
+                    {index + 1}.
                 </div>
-                <div class="p-8">
-                    <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Case study</div>
-                    <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">Finding customers for your new business</a>
-                    <p class="mt-2 text-slate-500">Getting a new business off the ground is a lot of hard work. Here are five ideas you can use to find your first customers.</p>
+                <img
+                    className={style.imgClass}
+                    src={urlFor(image).auto('format')}
+                    alt=""
+                />
+
+                <div>
+
+                    <h2 className='text-lg text-left'>{name}</h2>
+
+                    <h4 className='text-[#718096] text-left'>{starList} </h4>
                 </div>
             </div>
+
+            {/* RIGHT */}
+            <div className='order-last'>
+
+                {/*<div className=''>
+                    <h4 className='text-[#718096]'>{noOfNfts.length}</h4>
+                </div>*/}
+
+            </div>
         </div>
+
+
     )
 }
 
 export default ReviewCard
+
+
+
+

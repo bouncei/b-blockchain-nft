@@ -7,35 +7,36 @@ import BlogFooter from '../components/blog/BlogFooter'
 import ReviewCard from '../components/blog/ReviewCard'
 import SmallCard from '../components/SmallCard'
 
-function Blog({ items }) {
-  // console.log(items)
 
-  const [data, setData] = useState([])
+function Blog({ items, reviews }) {
+  console.log(reviews)
 
-  useEffect(() => {
-    if (!items) return
+  // const [data, setData] = useState([])
 
-    setData(items)
+  // useEffect(() => {
+  //   if (!items) return
 
-
-
-  }, [items])
-
-
-  console.log("quarried Data", data)
+  //   setData(items)
 
 
 
-  const nums = [1, 2, 3, 4];
-
-  const doubles = nums.map(num => {
-    return num * 2;
-  });
-
-  console.log(doubles); // [2, 4, 6, 8]
+  // }, [items])
 
 
-  console.log(typeof (doubles))
+  // // console.log("quarried Data", data.length)
+
+
+
+  // const nums = [1, 2, 3, 4];
+
+  // const doubles = nums.map(num => {
+  //   return num * 2;
+  // });
+
+  // console.log(doubles); // [2, 4, 6, 8]
+
+
+  // console.log(typeof (doubles))
 
 
 
@@ -56,12 +57,38 @@ function Blog({ items }) {
           </p>
           <div className='flex flex-wrap'>
 
-            <BlogCard image={items.mainImage} title={items.blogTitle} description={items.description} date={items.date} />
+            {items.map((item, id) => (
+              <BlogCard key={id} image={item.mainImage} title={item.blogTitle} description={item.description} date={item.date} />
+            ))}
 
 
           </div>
 
           {/* Reviews(use Grid) */}
+
+          <h2 className="p-5 py-20 text-4xl text-left font-semibold sm:px-16">
+            Reviews
+          </h2>
+          <hr className='border-gray-600 pb-7  ' />
+
+
+
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 ">
+            {reviews.map((review, id) => (
+              <ReviewCard
+                key={id}
+                name={review.name}
+                index={reviews.indexOf(review)}
+                image={review.picture}
+                stars={review.stars}
+
+              />
+            ))}
+          </div>
+
+
+
+
 
 
 
@@ -84,7 +111,7 @@ export async function getServerSideProps(context) {
   const id = context.params
   console.log(id)
 
-  const query = `*[_type == "blogs" ][0]{
+  const query = `*[_type == "blogs" ]{
     blogTitle,
     mainImage,
     blogDetails,
@@ -92,9 +119,18 @@ export async function getServerSideProps(context) {
     description,
   }`
 
-  const items = await sanityClient.fetch(query)
 
-  if (!items) {
+  const ReviewQuery = `*[_type == "reviews"]{
+    name,
+    picture,
+    stars,
+  }`
+
+  const items = await sanityClient.fetch(query)
+  const reviews = await sanityClient.fetch(ReviewQuery)
+
+
+  if (!items && !reviews) {
     return {
       props: null,
       notFound: true,
@@ -103,6 +139,7 @@ export async function getServerSideProps(context) {
     return {
       props: {
         items: items,
+        reviews: reviews,
       },
     }
   }

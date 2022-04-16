@@ -180,6 +180,35 @@ export default createSchema({
       },
 
       blogPost,
+
+      {
+        name: "reviews",
+        title: "Reviews",
+        type: "document",
+
+        fields: [
+          {
+            name: "name",
+            tile: "Name",
+            type: "string",
+
+          },
+
+          {
+            name: "picture",
+            title: "Picture",
+
+            type: "image",
+          },
+
+          {
+            name: "stars",
+            title: "Stars",
+            type: "number",
+          },
+
+        ],
+      }
     ]
     /* Your types here! */
   ),
