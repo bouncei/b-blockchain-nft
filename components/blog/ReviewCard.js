@@ -10,6 +10,7 @@ const style = {
 
 function ReviewCard({ name, image, stars, index, collectionItem }) {
     const [displayStars, setStars] = useState()
+    const [checkList, setCheckList] = useState(true)
 
     const starList = []
 
@@ -18,10 +19,25 @@ function ReviewCard({ name, image, stars, index, collectionItem }) {
 
     }
 
+    // setCheckList(true)
 
-    if (starList.length < 6) {
-        starList.push(".")
+    while (checkList) {
+
+        if (starList.length < 6) {
+            starList.push(".")
+        } else if (starList === 5) {
+            setCheckList(false)
+            break
+        }
+
+
+
+
     }
+
+
+
+
 
     console.log("complete star list", starList);
 
