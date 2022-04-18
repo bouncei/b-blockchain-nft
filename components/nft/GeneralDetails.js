@@ -8,7 +8,7 @@ import { TransactionContext } from '../../context/TransactionContext'
 
 const style = {
   wrapper: `flex`,
-  infoContainer: `h-36 flex flex-col flex-1 justify-between mb-6 w-screen md:w-auto`,
+  infoContainer: `h-36 flex flex-col flex-1 justify-between mb-6 w-screen md:w-0`,
   accent: `text-[#2081e2]`,
   nftTitle: `text-3xl font-extrabold`,
   otherInfo: `flex`,
