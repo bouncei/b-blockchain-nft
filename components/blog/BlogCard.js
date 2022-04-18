@@ -23,13 +23,13 @@ function BlogCard({ image, title, date, description }) {
         })
       }}
     >
-      <div class="max-w-sm rounded-lg border border-gray-200 bg-white shadow-md ease-out duration-100">
+      <div className="max-w-sm rounded-lg border border-gray-200 bg-white shadow-md ease-out duration-100">
         <img
           className="rounded-t-lg"
           src={urlFor(image).auto('format')}
           alt="Blog Image"
         />
-        <div class="p-5">
+        <div className="p-5">
           <a href="#">
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               {title}

@@ -51,7 +51,7 @@ const customStyles = {
 
 const Nft = ({ selectedNft }) => {
   const { formData, NftData, handleImage, handleName, handleChange, sendTransaction, currentAccount } = useContext(TransactionContext)
-  
+
   // const [ listings, setlistings ] = useState([])
   // console.log("location", window.location.href)
 
@@ -59,7 +59,7 @@ const Nft = ({ selectedNft }) => {
   const router = useRouter()
   const { check } = router.query
   // const [selectedNft, setSelectedNft] = useState({})
-  
+
 
   //Payment Configurations
   const price = handleChange(selectedNft.price ? selectedNft.price : "0.1")
@@ -67,21 +67,21 @@ const Nft = ({ selectedNft }) => {
   const name = handleName(selectedNft.caption)
 
 
- 
+
   const handleSubmit = async (e) => {
     const { addressTo, amount } = formData
-    const {image, name} = NftData
+    const { image, name } = NftData
     e.preventDefault()
 
     // console.log('got image', image)
     // console.log('got name', name)
 
-    if (!addressTo || !amount || !image || !name ) return
-    
-    
-    
+    if (!addressTo || !amount || !image || !name) return
+
+
+
     sendTransaction()
- 
+
 
   }
 
@@ -105,19 +105,22 @@ const Nft = ({ selectedNft }) => {
                 selectedNft={selectedNft}
                 // listings="true"
                 buyItem={(e) => handleSubmit(e)}
-                // Get the id from the route.query
+              // Get the id from the route.query
 
               />
 
 
             </div>
           </div>
-          <ItemActivity />
+          <div className="md:visible invisible">
+
+            <ItemActivity />
+          </div>
         </div>
       </div>
 
       <Footer />
-      <Modal isOpen={!! router.query.loading} style={customStyles}>
+      <Modal isOpen={!!router.query.loading} style={customStyles}>
         {/* <TransactionLoader /> */}
       </Modal>
     </div>
@@ -140,13 +143,13 @@ export async function getServerSideProps(context) {
 
   if (!items) {
     return {
-        props: null,
-        notFound: true,
+      props: null,
+      notFound: true,
     }
 
-  }else {
+  } else {
     return {
-      props:{
+      props: {
         selectedNft: items
       }
     }

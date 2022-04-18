@@ -23,7 +23,7 @@ const style = {
   divider: `border-r-2`,
   title: `text-5xl font-bold mb-4`,
   createdBy: `text-lg mb-4`,
-  statsContainer: `w-[44vw] flex justify-between py-4 border border-[#151b22] rounded-xl mb-4`,
+  statsContainer: `w-full md:w-[44vw] flex justify-between py-4 border border-[#151b22] rounded-xl mb-4`,
   collectionStat: `w-1/4 mx-[27px]`,
   statValue: `text-3xl font-bold w-full flex items-center justify-center`,
   ethLogo: `h-6 mr-2`,
@@ -45,148 +45,121 @@ const Item = ({
   allOwners,
   description,
   params,
-}) => {
-  // const router = useRouter()
-  // const { address } = router.query
-  // console.log(typeof params)
-  // console.log(Object.values(params)[0])
-  // console.log("these are the params", params)
+}) => (
+  <div className="overflow-hidden">
+    <Header />
+    <div className={style.bannerImageContainer}>
+      <img
+        className={style.bannerImage}
+        src={bannerImageUrl ? bannerImageUrl : 'https://via.placeholder.com/200'}
+        alt="banner" />
+    </div>
 
-  // console.log(creator)
-  // console.log("nice", imageUrl)
-
-  // console.log(nftItems.id)
-  // console.log(nftItems.imageTest)
-  return (
-    <div className="overflow-hidden">
-      <Header />
-      <div className={style.bannerImageContainer}>
+    <div className={style.infoContainer}>
+      <div className={style.midRow}>
         <img
-          className={style.bannerImage}
-          src={
-            bannerImageUrl ? bannerImageUrl : 'https://via.placeholder.com/200'
-          }
-          alt="banner"
-        />
+          className={style.profileImg}
+          src={imageUrl ? imageUrl : 'https://via.placeholder.com/200'}
+          alt="profile image" />
       </div>
 
-      <div className={style.infoContainer}>
-        <div className={style.midRow}>
-          <img
-            className={style.profileImg}
-            src={imageUrl ? imageUrl : 'https://via.placeholder.com/200'}
-            alt="profile image"
-          />
-        </div>
+      <div className={style.endRow}>
+        <div className={style.socialIconsContainer}>
+          <div className={style.socialIconsWrapper}>
+            <div className={style.socialIconsContent}>
+              <div className={style.socialIcon}>
+                <CgWebsite />
+              </div>
 
-        <div className={style.endRow}>
-          <div className={style.socialIconsContainer}>
-            <div className={style.socialIconsWrapper}>
-              <div className={style.socialIconsContent}>
-                <div className={style.socialIcon}>
-                  <CgWebsite />
-                </div>
+              <div className={style.divider}></div>
 
-                <div className={style.divider}></div>
+              <div className={style.socialIcon}>
+                <AiOutlineInstagram />
+              </div>
 
-                <div className={style.socialIcon}>
-                  <AiOutlineInstagram />
-                </div>
+              <div className={style.divider}></div>
 
-                <div className={style.divider}></div>
+              <div className={style.socialIcon}>
+                <AiOutlineTwitter />
+              </div>
 
-                <div className={style.socialIcon}>
-                  <AiOutlineTwitter />
-                </div>
+              <div className={style.divider}></div>
 
-                <div className={style.divider}></div>
-
-                <div className={style.socialIcon}>
-                  <HiDotsVertical />
-                </div>
+              <div className={style.socialIcon}>
+                <HiDotsVertical />
               </div>
             </div>
           </div>
-        </div>
-
-        <div className={style.midRow}>
-          <div className={style.title}>{title}</div>
-        </div>
-
-        <div className={style.midRow}>
-          <div className={style.createdBy}>
-            Created by <span className="text-[#2081e2]">{creator}</span>
-          </div>
-        </div>
-
-        <div className={style.midRow}>
-          <div className={style.statsContainer}>
-            <div className={style.collectionStat}>
-              <div className={style.statValue}>{nftItems.length}</div>
-              <div className={style.statName}>Items</div>
-            </div>
-            {/* <div className={style.collectionStat}>
-                            <div className={style.statValue}>
-                                {allOwners ? allOwners.length : ""}
-                            </div>
-                            <div className={style.statName}>owners</div>
-                        </div> */}
-            <div className={style.collectionStat}>
-              <div className={style.statValue}>
-                <img
-                  className={style.ethLogo}
-                  src="https://storage.opensea.io/files/6f8e2979d428180222796ff4a33ab929.svg"
-                  alt="eth"
-                />
-                {floorPrice}
-              </div>
-              <div className={style.statName}>Floor Price</div>
-            </div>
-
-            <div className={style.collectionStat}>
-              <div className={style.statValue}>
-                <img
-                  className={style.ethLogo}
-                  src="https://storage.opensea.io/files/6f8e2979d428180222796ff4a33ab929.svg"
-                  alt="eth"
-                />
-                {volumeTraded}.5k
-              </div>
-              <div className={style.statName}>Volume Traded</div>
-            </div>
-          </div>
-        </div>
-
-        <div className={style.midRow}>
-          <div className={style.description}>{description}</div>
         </div>
       </div>
 
-      <div className="flex flex-wrap ">
-        {nftItems.map((nftItem, id) => (
+      <div className={style.midRow}>
+        <div className={style.title}>{title}</div>
+      </div>
+
+      <div className={style.midRow}>
+        <div className={style.createdBy}>
+          Created by <span className="text-[#2081e2]">{creator}</span>
+        </div>
+      </div>
+
+      <div className={style.midRow}>
+        <div className={style.statsContainer}>
+          <div className={style.collectionStat}>
+            <div className={style.statValue}>{nftItems.length}</div>
+            <div className={style.statName}>Items</div>
+          </div>
+          {/* <div className={style.collectionStat}>
+                        <div className={style.statValue}>
+                            {allOwners ? allOwners.length : ""}
+                        </div>
+                        <div className={style.statName}>owners</div>
+                    </div> */}
+          <div className={style.collectionStat}>
+            <div className={style.statValue}>
+              <img
+                className={style.ethLogo}
+                src="https://storage.opensea.io/files/6f8e2979d428180222796ff4a33ab929.svg"
+                alt="eth" />
+              {floorPrice}
+            </div>
+            <div className={style.statName}>Floor Price</div>
+          </div>
+
+          <div className={style.collectionStat}>
+            <div className={style.statValue}>
+              <img
+                className={style.ethLogo}
+                src="https://storage.opensea.io/files/6f8e2979d428180222796ff4a33ab929.svg"
+                alt="eth" />
+              {volumeTraded}.5k
+            </div>
+            <div className={style.statName}>Volume Traded</div>
+          </div>
+        </div>
+      </div>
+
+      <div className={style.midRow}>
+        <div className={style.description}>{description}</div>
+      </div>
+    </div>
+
+    <div className="flex flex-wrap ">
+      {nftItems.map((nftItem, id) => {
+        return (
           <NftCard
             key={id}
             nftItem={nftItem}
             title={title}
-            listing="true"
-            // sub={caption}
-            // itemPrice={parseFloat(price) ? parseFloat(price) : 0.1}
-          />
-        ))}
-        {/* {nftItems.map((nftItem, id) => {
-                    <NftCard 
-                        key={id}
-                        nftItem={nftItem}
-                        title={title}
+            listing="true" />
+        )
+      })}
 
-                    />
-                })} */}
-      </div>
-
-      <Footer />
     </div>
-  )
-}
+
+    <Footer />
+  </div>
+)
 
 export const getServerSideProps = async (context) => {
   const { params } = context

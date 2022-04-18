@@ -23,7 +23,7 @@ const NFTImage = ({ selectedNft, alt }) => {
       <div>
         {/* {console.log(selectedNft, '🎆')} */}
         {/* <img src={urselectedNft?.image} /> */}
-        <img src={urlFor(selectedNft)} alt={alt}/>
+        <img src={urlFor(selectedNft)} alt={alt} className="h-full md:h-[44vh] object-contain"/>
       </div>
     </div>
   )

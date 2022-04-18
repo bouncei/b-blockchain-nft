@@ -61,7 +61,7 @@ const MakeOffer = ({ isListed, selectedNft, listings, buyItem }) => {
   // }
 
   return (
-    <div className="flex h-20 w-full items-center rounded-lg border border-[#151c22] bg-[#303339] px-12">
+    <div className="flex h-20 w-full items-center rounded-lg md:border border-[#151c22] bg-none md:bg-[#303339] px-0 md:px-12">
       <Toaster position="top-center" reverseOrder={false} />
       {isListed === 'true' ? (
         <>
