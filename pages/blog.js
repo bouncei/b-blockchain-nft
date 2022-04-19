@@ -6,37 +6,11 @@ import BlogCard from '../components/blog/BlogCard'
 import BlogFooter from '../components/blog/BlogFooter'
 import ReviewCard from '../components/blog/ReviewCard'
 import SmallCard from '../components/SmallCard'
+import Link from 'next/link'
+import { WiDirectionRight } from 'react-icons/wi'
 
-
-function Blog({ items, reviews }) {
-  console.log(reviews)
-
-  // const [data, setData] = useState([])
-
-  // useEffect(() => {
-  //   if (!items) return
-
-  //   setData(items)
-
-
-
-  // }, [items])
-
-
-  // // console.log("quarried Data", data.length)
-
-
-
-  // const nums = [1, 2, 3, 4];
-
-  // const doubles = nums.map(num => {
-  //   return num * 2;
-  // });
-
-  // console.log(doubles); // [2, 4, 6, 8]
-
-
-  // console.log(typeof (doubles))
+function Blog({ items }) {
+  // console.log(another)
 
 
 
@@ -69,25 +43,19 @@ function Blog({ items, reviews }) {
           <h2 className="p-5 py-20 text-4xl text-left font-semibold sm:px-16">
             Reviews
           </h2>
+
+          <Link href="/reviews">
+
+            <button className='relative text-lg font-semibold px-12 py-4 bg-[#2181e2] rounded-lg mr-5 text-[#e4e8ea] hover:bg-[#42a0ff] cursor-pointer '>Check Reviews</button>
+
+          </Link>
+
+          <br />
+          <br />
+          <br />
+          <br />
+
           <hr className='border-gray-600 pb-7  ' />
-
-
-
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-3 ">
-            {reviews.map((review, id) => (
-              <ReviewCard
-                key={id}
-                name={review.name}
-                index={reviews.indexOf(review)}
-                image={review.picture}
-                stars={review.stars}
-
-              />
-            ))}
-          </div>
-
-
-
 
 
 
@@ -107,30 +75,28 @@ function Blog({ items, reviews }) {
   )
 }
 
-export async function getServerSideProps(context) {
-  const id = context.params
-  console.log(id)
+export async function getServerSideProps() {
+
 
   const query = `*[_type == "blogs" ]{
     blogTitle,
     mainImage,
     blogDetails,
     date,
+    refReview,
     description,
   }`
 
 
-  const ReviewQuery = `*[_type == "reviews"]{
-    name,
-    picture,
-    stars,
-  }`
+
 
   const items = await sanityClient.fetch(query)
-  const reviews = await sanityClient.fetch(ReviewQuery)
 
 
-  if (!items && !reviews) {
+
+
+
+  if (!items) {
     return {
       props: null,
       notFound: true,
@@ -138,8 +104,8 @@ export async function getServerSideProps(context) {
   } else {
     return {
       props: {
+
         items: items,
-        reviews: reviews,
       },
     }
   }

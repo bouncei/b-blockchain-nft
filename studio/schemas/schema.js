@@ -7,6 +7,7 @@ import itemImage from './itemImage'
 import testImage from './testImage'
 import blogPost from './blogPost'
 import transactionSchema from './transactionSchema'
+import { type } from 'os'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -170,16 +171,26 @@ export default createSchema({
             type: 'image',
           },
 
+
           {
             name: 'blogDetails',
             title: 'Blog Details',
             type: 'array',
             of: [{ type: 'reference', to: [{ type: "blogPost" }] }],
           },
+
+          {
+            name: "refReview",
+            title: "Reviews",
+            type: "array",
+            of: [{ type: "reference", to: [{ type: "reviews" }] }],
+          },
+
         ],
       },
 
       blogPost,
+
 
       {
         name: "reviews",
@@ -209,6 +220,7 @@ export default createSchema({
 
         ],
       }
+
     ]
     /* Your types here! */
   ),

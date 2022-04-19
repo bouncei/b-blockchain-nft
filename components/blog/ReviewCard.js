@@ -8,9 +8,9 @@ const style = {
 
 
 
-function ReviewCard({ name, image, stars, index, collectionItem }) {
+function ReviewCard({ name, image, stars, index }) {
     const [displayStars, setStars] = useState()
-    const [checkList, setCheckList] = useState(true)
+    // const [checkList, setCheckList] = useState(true)
 
     const starList = []
 
@@ -21,19 +21,19 @@ function ReviewCard({ name, image, stars, index, collectionItem }) {
 
     // setCheckList(true)
 
-    while (checkList) {
+    // while (checkList) {
 
-        if (starList.length < 6) {
-            starList.push(".")
-        } else if (starList === 5) {
-            setCheckList(false)
-            break
-        }
-
-
+    //     if (starList.length < 6) {
+    //         starList.push(".")
+    //     } else if (starList === 5) {
+    //         setCheckList(false)
+    //         break
+    //     }
 
 
-    }
+
+
+    // }
 
 
 

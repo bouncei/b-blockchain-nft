@@ -5,6 +5,7 @@ import { TransactionProvider } from '../context/TransactionContext'
 // import NProgress from 'nprogress';
 // import 'nprogress/nprogress.css';
 // import Router from 'next/router';
+import Head from 'next/head';
 
 
 
@@ -19,15 +20,18 @@ import { TransactionProvider } from '../context/TransactionContext'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
+    <>
+      <Head>
+        <title>Base Mint</title>
+        <link rel="icon" href="/opensea.ico" />
+      </Head>
 
-    // <ThirdwebWeb3Provider supportedChainIds={supportedChainIds} connectors={connectors}>
 
-    //   <Component {...pageProps} />
-    // </ThirdwebWeb3Provider>
+      <TransactionProvider>
+        <Component {...pageProps} />
+      </TransactionProvider>
+    </>
 
-    <TransactionProvider>
-      <Component {...pageProps} />
-    </TransactionProvider>
   )
 }
 
