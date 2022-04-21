@@ -7,7 +7,7 @@ import { urlFor } from '../../sanity'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import BlogFooter from '../../components/blog/BlogFooter'
-import PortableText from '@sanity/block-content-to-react'
+import PortableText from '@sanity/block-content-to-react'  //Serializes Portable Text from sanity.io using GraphQL
 
 
 const style = {
