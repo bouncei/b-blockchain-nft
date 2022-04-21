@@ -1,4 +1,5 @@
 import { type } from "os";
+import { title } from "process";
 
 export default {
   name: 'blogPost',
@@ -12,7 +13,7 @@ export default {
       options: {
         hotspot: true,
       },
-      
+
 
     },
     {
@@ -29,6 +30,16 @@ export default {
       name: 'info',
       title: 'Info',
       type: 'string',
+    },
+    {
+      name: "portableText",
+      title: "Portable Text",
+      type: "array",
+
+      of: [{
+        type: "block",
+      },
+      ]
     },
   ],
 

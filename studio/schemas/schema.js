@@ -157,7 +157,10 @@ export default createSchema({
           {
             name: 'another',
             title: "Another",
-            type: "string",
+            type: "array",
+            of: [{
+              type: 'block',
+            }]
           },
 
           {

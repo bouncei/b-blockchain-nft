@@ -1245,7 +1245,7 @@
 
 "@sanity/block-content-to-react@^3.0.0":
   version "3.0.0"
-  resolved "https://registry.npmjs.org/@sanity/block-content-to-react/-/block-content-to-react-3.0.0.tgz"
+  resolved "https://registry.yarnpkg.com/@sanity/block-content-to-react/-/block-content-to-react-3.0.0.tgz#1deac74763540fdf61b14ad52fb1a01b35d60453"
   integrity sha512-oHPLlIsulsnL3ITs93RIvUPBI6nAeoSFOUf16vX4T7z4wWywxP39N1DF9mAx2tV6Kjr1fJAx5GF7zfiMXYLaqA==
   dependencies:
     "@sanity/block-content-to-hyperscript" "^3.0.0"
