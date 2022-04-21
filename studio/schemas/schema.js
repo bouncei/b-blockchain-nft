@@ -182,12 +182,12 @@ export default createSchema({
             of: [{ type: 'reference', to: [{ type: "blogPost" }] }],
           },
 
-          {
-            name: "refReview",
-            title: "Reviews",
-            type: "array",
-            of: [{ type: "reference", to: [{ type: "reviews" }] }],
-          },
+          // {
+          //   name: "refReview",
+          //   title: "Reviews",
+          //   type: "array",
+          //   of: [{ type: "reference", to: [{ type: "reviews" }] }],
+          // },
 
         ],
       },

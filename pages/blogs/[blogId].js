@@ -8,11 +8,12 @@ import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import BlogFooter from '../../components/blog/BlogFooter'
 import PortableText from '@sanity/block-content-to-react'  //Serializes Portable Text from sanity.io using GraphQL
+import Stack from '../../components/blog/Stack'
 
 
 const style = {
   pText: `text-2xl font-normal text-grey-700 pb-10`,
-  h1Tag: `text-left text-7xl font-semibold pb-10 text-[#ced6e0]`,
+  h1Tag: `text-left text-4xl md:text-7xl font-semibold pb-10 text-[#ced6e0]`,
   h2Tag: `text-left text-5xl font-semibold pb-10 text-[#ced6e0]`
 }
 
@@ -35,13 +36,7 @@ const style = {
 
 
 const Item = ({ details, blogTitle, mainImage, description, another, date }) => {
-  // const path = useRouter()
 
-  // console.log(details[0].portableText, "Portable Text Displayed");
-  // console.log(toPlainText(details[0].portableText))
-
-
-  // console.log("Blog Details", items)
   console.log(date)
   return (
     <div className=' overflow-hidden'>
@@ -75,27 +70,14 @@ const Item = ({ details, blogTitle, mainImage, description, another, date }) => 
 
 
           {/* Details Div Block */}
-          <div className=''>
-            <h2 className={style.h2Tag} >{details[0].caption}</h2>
-            <img
-              className="rounded-xl"
-              src={urlFor(details[0].blogImage).auto('format')}
-              alt="Blog Details Image"
+          {details.map((detail, id) => (
+            <Stack
+              key={id}
+              details={detail}
+              block={detail.portableText}
 
             />
-
-
-
-            <div className={`${style.pText} pt-10`}>
-
-              <PortableText
-                // all custom type blocks are filtered out
-                blocks={details[0].portableText.filter(({ _type }) => _type === "block")}
-              />
-            </div>
-
-
-          </div>
+          ))}
 
 
 

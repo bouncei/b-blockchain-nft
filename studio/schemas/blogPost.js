@@ -26,11 +26,7 @@ export default {
         isHightLight: true,
       },
     },
-    {
-      name: 'info',
-      title: 'Info',
-      type: 'string',
-    },
+
     {
       name: "portableText",
       title: "Portable Text",

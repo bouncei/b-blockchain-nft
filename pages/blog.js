@@ -20,7 +20,7 @@ function Blog({ items }) {
       <div className="bg-[#0a1d2e]">
         {/* Blog Posts */}
 
-        <div className="text md:p-auto mx-auto max-w-7xl p-7 text-left text-[#c8cacd] md:text-center">
+        <div className="text md:p-auto mx-auto max-w-5xl p-7 text-left text-[#c8cacd] md:text-center">
           <h2 className="p-5 py-20 text-4xl font-semibold sm:px-16">
             NFT Blog
           </h2>

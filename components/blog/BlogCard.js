@@ -5,7 +5,7 @@ import { urlFor } from '../../sanity'
 import BlogFooter from './BlogFooter'
 
 const style = {
-  wrapper: `bg-[#303339] max-w-sm flex-auto w-[14rem] h-[full] my-10 mx-5 overflow-hidden cursor-pointer rounded-sm hover:shadow-2xl hover:bg-grey-100 hover:scale-105 transition transform duration-500 ease-out`,
+  wrapper: `max-w-sm flex-auto w-[14rem] h-[full] my-10 mx-5 overflow-hidden cursor-pointer rounded-sm hover:shadow-2xl hover:bg-grey-100 hover:scale-105 transition transform duration-500 ease-out`,
   imagecontainer: `h-2/3 w-full overflow-hidden`,
   imgtag: `h-full w-full object-cover`,
   infoconainer: `h-20 bg-[#313338] p-4 rounded-b-lg flex items-center text-white mx-4`,
