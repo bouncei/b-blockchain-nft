@@ -12,7 +12,6 @@ export default function Collection({ items }) {
 
   return (
     <div className={style.wrapper}>
-      <Header />
       <h1 className="p-5 py-20 text-center text-4xl font-semibold text-white">
         COLLECTIONS
       </h1>

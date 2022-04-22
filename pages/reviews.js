@@ -10,7 +10,6 @@ function reviews({ items }) {
         <div className='overflow-hidden'>
 
 
-            <Header />
             <div className="bg-[#0a1d2e]">
                 <div className="text md:p-auto mx-auto max-w-7xl p-7 text-left text-[#c8cacd] md:text-center">
                     <h2 className="p-5 py-20 text-4xl font-semibold sm:px-16">

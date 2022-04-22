@@ -12,30 +12,29 @@ export default function AllNfts({
 
     return (
         <div className="overflow-hidden">
-            <Header />
             <h1 className="text-4xl text-white text-center font-semibold p-5 py-20">ALL NFTs</h1>
 
             <div className="max-w-7xl mx-auto px-8 sm:px-16">
                 <div className="pt-2">
                     <div className="flex flex-wrap">
                         {items.map((item, id) => (
-                            <NftCard 
+                            <NftCard
                                 key={id}
                                 nftItem={item}
 
                                 listing="true"
-                                
+
                             />
 
 
-                        ))} 
+                        ))}
                     </div>
                 </div>
             </div>
 
 
 
-            <Footer />                    
+            <Footer />
 
         </div>
     )
@@ -56,12 +55,12 @@ export async function getServerSideProps() {
     const items = await sanityClient.fetch(query)
 
 
-    if (!items ){
+    if (!items) {
         return {
             props: null,
             notFound: null,
         }
-    }else {
+    } else {
         return {
             props: {
 
@@ -69,5 +68,5 @@ export async function getServerSideProps() {
             },
         }
     }
-    
+
 }

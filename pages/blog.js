@@ -16,7 +16,6 @@ function Blog({ items }) {
 
   return (
     <div className="overflow-hidden">
-      <Header />
       <div className="bg-[#0a1d2e]">
         {/* Blog Posts */}
 

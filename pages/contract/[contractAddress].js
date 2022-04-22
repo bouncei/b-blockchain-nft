@@ -47,7 +47,6 @@ const Item = ({
   params,
 }) => (
   <div className="overflow-hidden">
-    <Header />
     <div className={style.bannerImageContainer}>
       <img
         className={style.bannerImage}

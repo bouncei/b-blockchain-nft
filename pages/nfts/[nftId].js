@@ -88,7 +88,6 @@ const Nft = ({ selectedNft }) => {
 
   return (
     <div className='overflow-hidden'>
-      <Header />
       <div className={style.wrapper}>
         <div className={style.container}>
           <div className={style.topContent}>

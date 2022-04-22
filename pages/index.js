@@ -36,7 +36,6 @@ export default function Home({ items }) {
       {/* {address ? (   //Conditional Rendering */}
 
       <>
-        <Header />
         <div className="section1">
           <Hero />
 

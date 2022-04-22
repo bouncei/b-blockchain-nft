@@ -44,7 +44,7 @@ export default function Profile() {
   const [userName, setUserName] = useState()
 
   useEffect(() => {
-    ;(async () => {
+    ; (async () => {
       if (!isLoading && currentAccount) {
         const query = `
             *[_type=="users" && _id == "${currentAccount}"] {
@@ -70,7 +70,6 @@ export default function Profile() {
 
   return (
     <div className="overflow-hidden">
-      <Header />
       {/* <h1 className="text-lg text-white text-4xl text-center">Profile Page</h1> */}
 
       <div className={style.bannerImageContainer}>

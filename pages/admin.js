@@ -6,7 +6,6 @@ export default function Admin({ items }) {
   //   console.log('check', items)
   return (
     <div >
-      <Header />
       <h1 className="p-5 py-20 text-center text-4xl font-semibold text-white">
         ADMIN
       </h1>
