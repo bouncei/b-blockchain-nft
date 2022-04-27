@@ -13,7 +13,7 @@ function BlogFooter() {
         <div className='overflow-hidden flex items-center px-0 md:px-10 justify-between'>
 
             {/* Link Button to home */}
-            <Link href="/">
+            <Link href="/allnfts">
 
                 <button className='relative text-lg font-semibold px-12 py-4 bg-[#2181e2] rounded-lg mr-5 text-[#e4e8ea] hover:bg-[#42a0ff] cursor-pointer'>Buy NFTs</button>
             </Link>
