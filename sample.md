@@ -4,8 +4,8 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 A Web3.0 Block-chain application to discover, collect, and sell extraordinary NFTs. The Decentralized application was built on the Ethereum Blockchain with Nextjs, and Smart contracts written in Solidity.
 
-> ## ⭐ Support Us
-> If you like our project, do not forget to give ⭐s. So we can get more attention and get more support from the community. Don't underestimate one star, one  star you give will convince others to give the project another star.
+> ## ⭐ Show Your Support
+> If you like this project, do not forget to give ⭐s. So it can get more attention and get more support from the community. Don't underestimate one star, one star you give will convince others to give the project another star.
 
 <!-- 
 ## 💪 Motivation
@@ -74,9 +74,15 @@ Everything and anything you need to know about Web3, NFTs, Decentralized apps an
 ## 🔮 Usage
 To use this application as your own, follow these simple steps:
 
--Fork this Repository (`git clone https://github.com/bouncei/b-blockchain-nft.git`)
--Install Dependecies (`yarn install`)
--Run Project (`yarn start`)
+>- 
+>- 
+>- 
+<ul>
+<li>Fork this Repository (`git clone https://github.com/bouncei/b-blockchain-nft.git`)</li>
+<li>Install Dependecies (`yarn install`)</li>
+<li>Run Project (`yarn start`)</li>
+
+</ul>
 
 <!-- # `yarn install (for first running)`
 # `yarn dev` -->
@@ -99,12 +105,30 @@ Give a  -->
 
 ## 🤝 Contribute
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are <strong>greatly appreciated</strong>. 😊
-
+<p>
 &emsp;1. Fork Project
+
+</p>
+<p>
 &emsp;2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+
+</p>
+
+<p>
 &emsp;3. Commit your changes()
+
+</p>
+
+<p>
+
 &emsp;4. Push to the Brach (`git checkout -b feature/AmazingFeature`)
+</p>
+
+<p>
 &emsp;5. Open a Pull Request
+
+</p>
+
 
 
 
