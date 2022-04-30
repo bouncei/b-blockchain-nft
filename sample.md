@@ -14,6 +14,18 @@ A Web3.0 Block-chain application to discover, collect, and sell extraordinary NF
 I aim to create an open and safe nft marketplace for everyone. This will be a challenge for both me and the contributors. Together we will create an open source, reliable and beautiful nft marketplace example. The purpose of this project is not to operate an nft marketplace, but to create a template for nft marketplaces. Thus, many nft marketplaces can be easily created by forking and modifying this template. This will be beneficial for us to support the artists. We can only succeed in the world by coming from different areas and joining our forces.
 </p> -->
 
+## 🔧 Technology Stack & Tools
+<ul>
+<li>Solidity(Writing Smart Contracts)</li>
+<li>NextJs</li>
+<li>[Ethers]()</li>
+<li>[Hardhat]()</li>
+<li>[Sanity]()  (Backend Database)</li>
+
+
+
+</ul>
+
 ## 🖥️ Screenshoots 
 
 ### Home
@@ -71,6 +83,11 @@ I aim to create an open and safe nft marketplace for everyone. This will be a ch
 Everything and anything you need to know about Web3, NFTs, Decentralized apps and games.
  - [BaseMint Blog](https://baseminty.com/blog)
 
+<p align='center'>
+
+  <img alt="Light" src="docs/images/blog.png" width="45%">
+</p>
+
 ## 🔮 Usage
 To use this application as your own, follow these simple steps:
 <!-- 
@@ -78,9 +95,9 @@ To use this application as your own, follow these simple steps:
 >- 
 >-  -->
 <ul>
-<li>Fork this Repository (`git clone https://github.com/bouncei/b-blockchain-nft.git`)</li>
-<li>Install Dependecies (`yarn install`)</li>
-<li>Run Project (`yarn start`)</li>
+<li><p>Fork this Repository (`git clone https://github.com/bouncei/b-blockchain-nft.git`)<p/></li>
+<li><p>Install Dependecies (`yarn install`)</p></li>
+<li><p>Run Project (`yarn start`)</p></li>
 
 </ul>
 
@@ -92,10 +109,6 @@ To use this application as your own, follow these simple steps:
 <!-- ![detail](docs/images/blog.png) -->
 
 <!-- ![blog](docs/images/blog.png) -->
-<p align='center'>
-
-  <img alt="Light" src="docs/images/blog.png" width="45%">
-</p>
 
 
 <!-- ### Show Your Support
@@ -110,18 +123,18 @@ Contributions are what make the open source community such an amazing place to b
 
 </p>
 <p>
+
 &emsp;2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+</p>
+
+<p>
+&emsp;3. Commit your changes(`git commit -m 'Add Some Amazing Feature'`)
 
 </p>
 
 <p>
-&emsp;3. Commit your changes()
 
-</p>
-
-<p>
-
-&emsp;4. Push to the Brach (`git checkout -b feature/AmazingFeature`)
+&emsp;4. Push to the Brach (`git push origin feature/AmazingFeature`)
 </p>
 
 <p>
@@ -143,7 +156,7 @@ Contributions are what make the open source community such an amazing place to b
  - [LinkedIn](https://www.linkedin.com/in/joshua-inyang-2753841b7/) 
  <br/>
 
-[My Website](https://www.bouncei.herokuapp.com)
-<br/>
+ - [My Website](https://www.bouncei.herokuapp.com)
+ <br/>
 
 - [twitter ](https://twitter.com/InyangJoshua8)
