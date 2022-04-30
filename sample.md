@@ -22,12 +22,25 @@ I aim to create an open and safe nft marketplace for everyone. This will be a ch
 
 ### Explore
 
-![explore](docs/images/collections.png)
-![explore](docs/images/singleC.png)
+<!-- ![explore](docs/images/collections.png)
+![explore](docs/images/singleC.png) -->
 
+<p align="center">
+  <img alt="Light" src="docs/images/collections.png" width="45%">
+&nbsp; &nbsp; &nbsp; &nbsp;
+  <img alt="Dark" src="docs/images/singleC.png" width="45%">
+</p>
 
 ### Nft Detail
-![detail](docs/images/all_nfts.png)  ![detail](docs/images/singleN.png)
+<!-- ![detail](docs/images/all_nfts.png)  ![detail](docs/images/singleN.png) -->
+
+
+<p align="center">
+  <img alt="Light" src="docs/images/all_nfts.png" width="45%">
+&nbsp; &nbsp; &nbsp; &nbsp;
+  <img alt="Dark" src="docs/images/singleN.png" width="45%">
+</p>
+
 
 
 ### Augmented Reality Support
