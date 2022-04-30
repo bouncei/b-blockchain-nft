@@ -15,16 +15,20 @@ I aim to create an open and safe nft marketplace for everyone. This will be a ch
 </p> -->
 
 ## 🔧 Technology Stack & Tools
-<ul>
-<li>Solidity(Writing Smart Contracts)</li>
-<li>NextJs</li>
-<li>[Ethers]()</li>
-<li>[Hardhat]()</li>
-<li>[Sanity]()  (Backend Database)</li>
+
+<p>Solidity(Writing Smart Contracts)</p> <br/>
+- [BaseMint Blog](https://baseminty.com/blog)
 
 
 
-</ul>
+- [Ethers](https://docs.ethers.io/)
+<br/>
+
+- [Hardhat](https://hardhat.org/)
+<br/>
+
+- [Sanity.io](https://www.sanity.io/)
+
 
 ## 🖥️ Screenshoots 
 
@@ -95,9 +99,19 @@ To use this application as your own, follow these simple steps:
 >- 
 >-  -->
 <ul>
-<li><p>Fork this Repository (`git clone https://github.com/bouncei/b-blockchain-nft.git`)<p/></li>
-<li><p>Install Dependecies (`yarn install`)</p></li>
-<li><p>Run Project (`yarn start`)</p></li>
+<li><p>
+
+Fork this Repository (`git clone https://github.com/bouncei/b-blockchain-nft.git`)
+<p/></li>
+<li><p>
+
+Install Dependecies (`yarn install`)
+
+</p></li>
+<li><p>
+Run Project (`yarn start`)
+
+</p></li>
 
 </ul>
 
@@ -128,13 +142,13 @@ Contributions are what make the open source community such an amazing place to b
 </p>
 
 <p>
-&emsp;3. Commit your changes(`git commit -m 'Add Some Amazing Feature'`)
 
+&emsp;3. Commit your changes(`git commit -m "Add Some Amazing Feature" `)
 </p>
 
 <p>
 
-&emsp;4. Push to the Brach (`git push origin feature/AmazingFeature`)
+&emsp;4. Push to the Branch (`git push origin feature/AmazingFeature`)
 </p>
 
 <p>
