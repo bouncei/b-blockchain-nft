@@ -27,8 +27,7 @@ I aim to create an open and safe nft marketplace for everyone. This will be a ch
 
 
 ### Nft Detail
-![detail](docs/images/all_nfts.png)
-![detail](docs/images/singleN.png)
+![detail](docs/images/all_nfts.png)  ![detail](docs/images/singleN.png)
 
 
 ### Augmented Reality Support
