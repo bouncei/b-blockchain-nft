@@ -16,9 +16,11 @@ I aim to create an open and safe nft marketplace for everyone. This will be a ch
 
 ## 🔧 Technology Stack & Tools
 
-<p>Solidity(Writing Smart Contracts)</p> <br/>
-- [BaseMint Blog](https://baseminty.com/blog)
+- [Solidity](https://docs.soliditylang.org/en/v0.8.13/) (Writing Smart Contracts)
+<br/>
 
+- [NextJs](https://nextjs.org/) (React Framework for Production)
+<br/>
 
 
 - [Ethers](https://docs.ethers.io/)
@@ -28,6 +30,9 @@ I aim to create an open and safe nft marketplace for everyone. This will be a ch
 <br/>
 
 - [Sanity.io](https://www.sanity.io/)
+<br/>
+
+- [MetaMask]() (User Authentication)
 
 
 ## 🖥️ Screenshoots 
@@ -81,7 +86,7 @@ I aim to create an open and safe nft marketplace for everyone. This will be a ch
  - [x] Login
  - [x] User's Profile Page
  - [x] User Collections
- - [x] Connect Wallet Popup
+ - [x] Connect MetaMast Wallet Popup
  - [x] Supported Mobile Devices
 ## 🗞️ Blog
 Everything and anything you need to know about Web3, NFTs, Decentralized apps and games.
@@ -102,15 +107,15 @@ To use this application as your own, follow these simple steps:
 <li><p>
 
 Fork this Repository (`git clone https://github.com/bouncei/b-blockchain-nft.git`)
-<p/></li>
+</p></li>
 <li><p>
 
 Install Dependecies (`yarn install`)
 
 </p></li>
 <li><p>
-Run Project (`yarn start`)
 
+Run Project (`yarn start`)
 </p></li>
 
 </ul>
