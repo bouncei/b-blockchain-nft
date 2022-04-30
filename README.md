@@ -34,6 +34,7 @@ I aim to create an open and safe nft marketplace for everyone. This will be a ch
 
 - [MetaMask]() (User Authentication)
 
+> View [live](https://baseminty.com) project. 😁
 
 ## 🖥️ Screenshoots 
 
