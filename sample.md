@@ -73,10 +73,10 @@ Everything and anything you need to know about Web3, NFTs, Decentralized apps an
 
 ## 🔮 Usage
 To use this application as your own, follow these simple steps:
-
+<!-- 
 >- 
 >- 
->- 
+>-  -->
 <ul>
 <li>Fork this Repository (`git clone https://github.com/bouncei/b-blockchain-nft.git`)</li>
 <li>Install Dependecies (`yarn install`)</li>
@@ -140,6 +140,10 @@ Contributions are what make the open source community such an amazing place to b
 
 
 ## 📞 Contact
-LinkedIn - [](https://www.linkedin.com/in/joshua-inyang-2753841b7/)
-My Website - [](www.bouncei.herokuapp.com)
-twitter - [](https://twitter.com/InyangJoshua8)
+ - [LinkedIn](https://www.linkedin.com/in/joshua-inyang-2753841b7/) 
+ <br/>
+
+[My Website](https://www.bouncei.herokuapp.com)
+<br/>
+
+- [twitter ](https://twitter.com/InyangJoshua8)
