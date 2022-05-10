@@ -37,7 +37,7 @@ const style = {
 
 const Item = ({ details, blogTitle, mainImage, description, another, date }) => {
 
-  console.log(date)
+  // console.log(date)
   return (
     <div className=' overflow-hidden'>
 

@@ -211,7 +211,7 @@ export const TransactionProvider = ({ children }) => {
     return
   }
 
-  console.log("checking the isLoadng", typeof isLoading)
+  // console.log("checking the isLoadng", typeof isLoading)
 
   // Preloader Modal for trandaction in progress
   useEffect(() => {

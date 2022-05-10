@@ -128,9 +128,6 @@ const Header = () => {
       )}
 
       {currentAccount ? (
-        // <div className={`${style.button} ${style.buttonPadding}`}>
-        //   <div className={style.buttonTextContainer}>0x672...38a</div>
-        // </div>
 
         <div className={`${checkMenu ? style.headerItems : style.MenuItems}`}>
           <Link href="/">
@@ -144,6 +141,10 @@ const Header = () => {
           <Link href="/allnfts">
             <div className={style.headerItem}> NFTs </div>
           </Link>
+
+          <Link href="/blog">
+          <div className={style.headerItem}>NFT Blog</div>
+        </Link>
 
           {checkMenu ? (
             <div className={`${style.headerIcon} ${style.addressProfile} `}>

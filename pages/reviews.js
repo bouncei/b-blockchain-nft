@@ -5,7 +5,7 @@ import Header from '../components/Header'
 import { sanityClient } from '../sanity'
 
 function reviews({ items }) {
-    console.log(items)
+    // console.log(items)
     return (
         <div className='overflow-hidden'>
 
