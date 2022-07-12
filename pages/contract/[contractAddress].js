@@ -118,7 +118,7 @@ const Item = ({
             <div className={style.statValue}>
               <img
                 className={style.ethLogo}
-                src="https://storage.opensea.io/files/6f8e2979d428180222796ff4a33ab929.svg"
+                src="https://openseauserdata.com/files/6f8e2979d428180222796ff4a33ab929.svg"
                 alt="eth" />
               {floorPrice}
             </div>
@@ -129,7 +129,7 @@ const Item = ({
             <div className={style.statValue}>
               <img
                 className={style.ethLogo}
-                src="https://storage.opensea.io/files/6f8e2979d428180222796ff4a33ab929.svg"
+                src="https://openseauserdata.com/files/6f8e2979d428180222796ff4a33ab929.svg"
                 alt="eth" />
               {volumeTraded}.5k
             </div>

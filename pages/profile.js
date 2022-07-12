@@ -127,7 +127,7 @@ export default function Profile() {
           <div className="border-grey-100 flex items-center rounded-xl border px-8 py-2">
             <img
               className={style.ethLogo}
-              src="https://storage.opensea.io/files/6f8e2979d428180222796ff4a33ab929.svg"
+              src="https://openseauserdata.com/files/6f8e2979d428180222796ff4a33ab929.svg"
               alt="eth"
             />
             <div className="font-light ">{userName}</div>
