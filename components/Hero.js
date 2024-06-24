@@ -47,8 +47,8 @@ const Hero = () => {
           <div className={style.cardContainer}>
             <img
               className="rounded-t-lg"
-              src="https://bloks.io/cdn-cgi/image/width=500/https://ipfs.io/ipfs/QmX1i5kCtVauTWvRRhsmPhz2iUjtMec2ZZnosqMDqpHNsS"
-              alt="image"
+              src="https://i.seadn.io/gcs/files/df7a822a4ccbeb5b3daae7e42cbe680e.png?auto=format&dpr=1&w=384"
+              alt="Hero Image"
             />
 
             <div className={style.infoContainer}>
